@@ -25,4 +25,30 @@ router.post('/teacher-still-teaching', function (req, res) {
   }
 })
 
+router.post('/teacher-qualified', function (req, res) {
+
+  let qualificationRoute = req.session.data['qualification-route']
+  let question = ''
+
+  switch(qualificationRoute) {
+    case 'pgce' :
+      question = 'What subject did you specialise in during your PGCE?'
+      break
+
+    case 'school-direct' :
+      question = 'What subject did you specialise in during your School Direct teacher training?'
+      break
+
+    case 'scitt' :
+      question = 'What subject did you specialise in during your School-centred initial teacher training?'
+      break
+
+    case 'teach-first' :
+      question = 'What subject did you specialise in during your Teach First initial teacher training?'
+      break
+  }
+
+  res.render('teacher-qualified', { 'questionText' : question });
+})
+
 module.exports = router

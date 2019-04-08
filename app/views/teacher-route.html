@@ -9,9 +9,47 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        DfE Maths and Physics Service Prototype
-      </h1>
+      <form method="POST" action="teacher-qualified">
+        {% from "radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "qualification-route",
+          name: "qualification-route",
+          fieldset: {
+            legend: {
+              text: "Via which route did you qualify as a teacher?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "pgce",
+              text: "PGCE"
+            },
+            {
+              value: "school-direct",
+              text: "School Direct"
+            },
+            {
+              value: "scitt",
+              text: "SCITT"
+            },
+            {
+              value: "teach-first",
+              text: "Teach First"
+            }
+          ]
+        }) }}
+
+        {% from "button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue",
+          preventDoubleClick: true
+        }) }}
+      </form>
     </div>
   </div>
 
