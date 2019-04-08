@@ -14,4 +14,15 @@ router.post('/teacher-when', function (req, res) {
   }
 })
 
+router.post('/teacher-still-teaching', function (req, res) {
+
+  let stillTeaching = req.session.data['still-teaching']
+
+  if (stillTeaching === 'false') {
+    res.redirect('/ineligible')
+  } else {
+    res.redirect('/teacher-route')
+  }
+})
+
 module.exports = router
