@@ -9,33 +9,28 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-location">
+      <form method="POST" action="teacher-qualified-teach-first-ske">
         {% from "radios/macro.njk" import govukRadios %}
-        {% set legendQuestion =  questionText %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "qualified-subject",
-          name: "qualified-subject",
+          idPrefix: "teach-first-ske",
+          name: "teach-first-ske",
           fieldset: {
             legend: {
-              text: legendQuestion,
+              text: "Did you complete a Physics 'Subject Knowledge Enhancement'? ",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           items: [
             {
-              value: "science",
-              text: "Science"
+              value: "true",
+              text: "Yes"
             },
             {
-              value: "maths",
-              text: "Maths"
-            },
-            {
-              value: "other",
-              text: "Other"
+              value: "false",
+              text: "No"
             }
           ]
         }) }}

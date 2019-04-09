@@ -28,6 +28,7 @@ router.post('/teacher-still-teaching', function (req, res) {
 router.post('/teacher-qualified', function (req, res) {
 
   let qualificationRoute = req.session.data['qualification-route']
+
   let question = ''
 
   switch(qualificationRoute) {
@@ -49,6 +50,29 @@ router.post('/teacher-qualified', function (req, res) {
   }
 
   res.render('teacher-qualified', { 'questionText' : question });
+})
+
+router.post('/teacher-location', function (req, res) {
+
+  let qualifiedSubject = req.session.data['qualified-subject']
+  let qualificationRoute = req.session.data['qualification-route']
+
+  if (qualificationRoute === 'teach-first' && qualifiedSubject === 'science') {
+    res.redirect('/teacher-qualified-teach-first-ske')
+  } else {
+    res.redirect('/teacher-location')
+  }
+})
+
+router.post('/teacher-qualified-teach-first-ske', function (req, res) {
+
+  let teachFirstSke = req.session.data['teach-first-ske']
+
+  if (teachFirstSke === 'false') {
+    res.redirect('/ineligible')
+  } else {
+    res.redirect('/teacher-location')
+  }
 })
 
 module.exports = router
