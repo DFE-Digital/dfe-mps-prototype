@@ -9,14 +9,28 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-location">
+      <form method="POST" action="teacher-employed">
         {% from "radios/macro.njk" import govukRadios %}
-        {% set legendQuestion =  questionText %}
+        {% from "input/macro.njk" import govukInput %}
+
+        {% set legendQuestion =  "Which subject were you originally employed to teach at " + data['school-name'] + "?"%}
+
+        {% set subjectOther %}
+        {{ govukInput({
+          id: "other-subject",
+          name: "other-subject",
+          type: "text",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Please specify"
+          }
+        }) }}
+        {% endset -%}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "qualification-route",
-          name: "qualification-route",
+          idPrefix: "subject",
+          name: "subject",
           fieldset: {
             legend: {
               text: legendQuestion,
@@ -27,7 +41,7 @@
           items: [
             {
               value: "science",
-              text: "Science"
+              text: "Science (physics, chemistry or biology) "
             },
             {
               value: "maths",
@@ -35,7 +49,10 @@
             },
             {
               value: "other",
-              text: "Other"
+              text: "Other",
+              conditional: {
+                html: subjectOther
+              }
             }
           ]
         }) }}
