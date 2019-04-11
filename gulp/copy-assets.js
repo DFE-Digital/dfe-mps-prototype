@@ -25,3 +25,15 @@ gulp.task('copy-assets-v6', function () {
     config.paths.v6Assets + '/**'])
     .pipe(gulp.dest(config.paths.public + '/v6'))
 })
+
+var autocompleteAssets = [
+  { src: config.paths.nodeModules + '/accessible-autocomplete/dist/accessible-autocomplete.min.js', dest: config.paths.public + '/vendor/accessible-autocomplete' },
+  { src: config.paths.nodeModules + '/accessible-autocomplete/dist/accessible-autocomplete.min.css', dest: config.paths.public + '/vendor/accessible-autocomplete' }
+]
+gulp.task('copy-awesomecomplete', function (next) {
+  autocompleteAssets.map(function (asset) {
+    return gulp.src([asset.src])
+      .pipe(gulp.dest(asset.dest))
+  })
+  next()
+})
