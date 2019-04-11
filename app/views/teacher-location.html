@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Where did you teach between 1 September 2017 and 31 August 2018?
+      </h1>
+
+      <form method="POST" action="teacher-employed">
+        {% from "details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+          summaryText: "You taught at more than one school",
+          text: "For now, enter one of the schools you've taught at. You can check another school when you've finished."
+        }) }}
+
+        {% from "input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "Enter the school name"
+          },
+          id: "school-name",
+          name: "school-name"
+        }) }}
+
+        {% from "button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue",
+          preventDoubleClick: true
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

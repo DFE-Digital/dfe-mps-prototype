@@ -1,0 +1,81 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "summary-list/macro.njk" import govukSummaryList %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/teacher-contact-method"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "School"
+            },
+            value: {
+              text: data['school-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/teacher-location",
+                  text: "Change",
+                  visuallyHiddenText: "school-name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact details"
+            },
+            value: {
+              html: '<p class="govuk-body">' + data['email-address'] + data['mobile-number'] + '</p>'
+            },
+            actions: {
+              items: [
+                {
+                  href: "teacher-contact-method",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Confirm your claim</h2>
+
+      <p class="govuk-body">By submitting this claim you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+      <form action="/teacher-success" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        {{ govukButton({
+          text: "Confirm and send"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -9,28 +9,33 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-still-teaching">
+      <form method="POST" action="teacher-location">
         {% from "radios/macro.njk" import govukRadios %}
+        {% set legendQuestion =  questionText %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "still-teaching",
-          name: "still-teaching",
+          idPrefix: "qualified-subject",
+          name: "qualified-subject",
           fieldset: {
             legend: {
-              text: "Are you still teaching at a school in the UK?",
+              text: legendQuestion,
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           items: [
             {
-              value: "true",
-              text: "Yes"
+              value: "science",
+              text: "Science"
             },
             {
-              value: "false",
-              text: "No"
+              value: "maths",
+              text: "Maths"
+            },
+            {
+              value: "other",
+              text: "Other"
             }
           ]
         }) }}

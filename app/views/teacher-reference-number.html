@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="POST" action="teacher-payment-method">
+        {% from "input/macro.njk" import govukInput %}
+        {% from "button/macro.njk" import govukButton %}
+
+        {{ govukInput({
+          label: {
+            text: "What's your teacher reference number?",
+            classes: "govuk-label--xl",
+            isPageHeading: true
+          },
+          hint: {
+            text: "This is on the certificate you got when you qualified as a teacher, or your school can tell you."
+          },
+          id: "trn",
+          name: "trn"
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          preventDoubleClick: true
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
