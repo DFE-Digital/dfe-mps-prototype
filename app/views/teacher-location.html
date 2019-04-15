@@ -23,13 +23,8 @@
 
         {% from "input/macro.njk" import govukInput %}
 
-        {{ govukInput({
-          label: {
-            text: "Enter the school name"
-          },
-          id: "school-name",
-          name: "school-name"
-        }) }}
+        <label class="govuk-label" for="schoolName">Enter the school name</label>
+        <div class="govuk-form-group" id="schoolNameContainer"></div>
 
         {% from "button/macro.njk" import govukButton %}
 
@@ -40,5 +35,18 @@
       </form>
     </div>
   </div>
+
+{% set schoolNames = schoolList %}
+<script>
+window.onload = function () {
+  schoolNames = "{{ schoolList | safe }}".split(',')
+  accessibleAutocomplete({
+    element: document.querySelector('#schoolNameContainer'),
+    id: 'schoolName',
+    source: schoolNames,
+    minLength: 4
+  })
+}
+</script>
 
 {% endblock %}

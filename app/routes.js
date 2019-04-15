@@ -60,6 +60,15 @@ router.post('/teacher-location', function (req, res) {
   }
 })
 
+router.get('/teacher-location', function (req, res) {
+  var schoolData = require('./data/gias_all.min.json')
+  var schoolList = schoolData.map(function (school) {
+    return school.est_name
+  })
+
+  res.render('teacher-location', { 'schoolList': schoolList })
+})
+
 router.post('/teacher-qualified-teach-first-ske', function (req, res) {
   let teachFirstSke = req.session.data['teach-first-ske']
 

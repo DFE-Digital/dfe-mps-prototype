@@ -28,6 +28,7 @@ gulp.task('copy-assets-v6', function () {
 
 var autocompleteAssets = [
   { src: config.paths.nodeModules + '/accessible-autocomplete/dist/accessible-autocomplete.min.js', dest: config.paths.public + '/vendor/accessible-autocomplete' },
+  { src: config.paths.nodeModules + '/accessible-autocomplete/dist/accessible-autocomplete.min.js.map', dest: config.paths.public + '/vendor/accessible-autocomplete' },
   { src: config.paths.nodeModules + '/accessible-autocomplete/dist/accessible-autocomplete.min.css', dest: config.paths.public + '/vendor/accessible-autocomplete' }
 ]
 gulp.task('copy-awesomecomplete', function (next) {
