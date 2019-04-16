@@ -22,6 +22,8 @@
 
       <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
 
+      {% set schoolName =  data['school-name'] %}
+
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
@@ -30,7 +32,7 @@
               text: "School"
             },
             value: {
-              text: data['school-name']
+              text: schoolName
             },
             actions: {
               items: [
