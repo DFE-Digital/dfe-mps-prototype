@@ -1,0 +1,93 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+
+{% block beforeContent %}
+  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        DfE Sign-in
+      </h1>
+      <p class="govuk-body">DfE Sign-in is the new way to access some education sector services.</p>
+
+      <form action="POST" action="admin/claims">
+
+        {{ govukFieldset({
+          legend: {
+            text: "Sign-in",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Email address"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "email",
+          name: "email",
+          type: "email",
+          autocomplete: "email",
+          attributes: {
+            required: "true"
+          }
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Password"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "password",
+          name: "password",
+          type: "password",
+          autocomplete: "password",
+          attributes: {
+            required: "true"
+          }
+        }) }}
+
+        <p class="govuk-body-s"><a href="#">I've forgotten my password</a></p>
+
+        {{ govukInsetText({
+          html: 'By continuing you accept the <a href="#">terms and conditions</a>.'
+        }) }}
+
+        {{ govukButton({
+          text: "Sign in",
+          preventDoubleClick: true
+        }) }}
+      </form>
+
+      {% from "details/macro.njk" import govukDetails %}
+
+      {{ govukDetails({
+        summaryText: "Having problems?",
+        html: 'If you are having problems using the DfE Sign-in service, follow <a href="#">DfE Sign-in Help</a>. You will be able to request further assistance if required.'
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
