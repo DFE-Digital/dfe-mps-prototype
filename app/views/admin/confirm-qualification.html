@@ -1,0 +1,64 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="POST" action="claim-teacher-1">
+        {% from "radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "adminQualification",
+          name: "adminQualification",
+          fieldset: {
+            legend: {
+              text: "Which subject does Jane Jones have a specialised teaching qualification in?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Physics",
+              text: "Physics"
+            },
+            {
+              value: "Maths",
+              text: "Maths"
+            },
+            {
+              value: "Other",
+              text: "Other"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          preventDoubleClick: true
+        }) }}
+
+        <div>
+          <a href="claim-teacher-1.html">Skip for now</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
