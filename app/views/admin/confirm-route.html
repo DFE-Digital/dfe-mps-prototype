@@ -1,0 +1,68 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="POST" action="claim-teacher-1">
+        {% from "radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "adminRoute",
+          name: "adminRoute",
+          fieldset: {
+            legend: {
+              text: "What subject was Jane Jones originally employed to teach at Moorside High School?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "PGCE",
+              text: "PGCE"
+            },
+            {
+              value: "School Direct",
+              text: "School Direct"
+            },
+            {
+              value: "SCITT",
+              text: "SCITT"
+            },
+            {
+              value: "Teach First",
+              text: "Teach First"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          preventDoubleClick: true
+        }) }}
+
+        <div>
+          <a href="claim-teacher-1.html">Skip for now</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
