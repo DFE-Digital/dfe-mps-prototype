@@ -20,12 +20,12 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="">
+      <form method="POST" action="claim-teacher-1">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          idPrefix: "qts",
-          name: "qts",
+          idPrefix: "adminQts",
+          name: "adminQts",
           fieldset: {
             legend: {
               text: "Did Jane Jones qualify as a teacher on or after 1 September 2014? ",
@@ -35,11 +35,11 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             }
           ]
