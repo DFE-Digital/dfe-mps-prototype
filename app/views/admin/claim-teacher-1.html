@@ -61,6 +61,8 @@
       }) }}
 
       <h2 class="govuk-heading-m">Claim details for Jane Jones</h2>
+      {% set answerQts =  data['admin-qts'] %}
+
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9 wide',
         rows: [
@@ -69,7 +71,7 @@
               text: "Did they qualify as a teacher on or after 1 September 2014?"
             },
             value: {
-              html: '<span class="answer-incomplete">Incomplete</span>'
+              text: answerQts
             },
             actions: {
               items: [
