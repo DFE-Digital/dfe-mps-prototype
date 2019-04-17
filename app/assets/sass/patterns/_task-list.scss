@@ -54,7 +54,8 @@
   }
 }
 
-.app-task-list__task-completed {
+.app-task-list__task-completed,
+.app-task-list__task {
   margin-top: govuk-spacing(2);
   margin-bottom: govuk-spacing(1);
 
@@ -63,4 +64,17 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+}
+
+.app-task-list__task {
+  background-color: #fdbe53;
+}
+
+.app-task-list .app-task-list__item span.date-applied {
+  display: inline-block;
+  margin-left: 10px;
+  color: grey;
+  font-size: 16px;
+  font-style: italic;
+  text-decoration: none;
 }
