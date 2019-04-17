@@ -28,7 +28,7 @@
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">Retention payment claim details:</h1>
 
-      <form method="POST"   action="confirmation">
+      <form method="POST" action="confirmation">
         {% from "summary-list/macro.njk" import govukSummaryList %}
 
         <h2 class="govuk-heading-m">Teacher details</h2>
@@ -63,6 +63,16 @@
         }) }}
 
         <h2 class="govuk-heading-m">Claim details for Jane Jones</h2>
+        {% set adminQts = data['adminQts'] if data['adminQts'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {% set adminConfirmWorked = data['adminConfirmWorked'] if data['adminConfirmWorked'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {% set adminEmployed = data['adminEmployed'] if data['adminEmployed'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {% set adminRoute = data['adminRoute'] if data['adminRoute'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {% set adminQualification = data['adminQualification'] if data['adminQualification'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
         {{ govukSummaryList({
           classes: 'govuk-!-margin-bottom-9 wide',
           rows: [
@@ -71,7 +81,7 @@
                 text: "Did they qualify as a teacher on or after 1 September 2014?"
               },
               value: {
-                text: data['admin-qts']
+                html: adminQts
               },
               actions: {
                 items: [
@@ -88,7 +98,7 @@
                 text: "Did they work at the school between 1 September 2017 and 31 August 2018?"
               },
               value: {
-                text: data['adminConfirmWorked']
+                html: adminConfirmWorked
               },
               actions: {
                 items: [
@@ -105,7 +115,7 @@
                 text: "Which subject were they originally employed to teach at Moorside High School?"
               },
               value: {
-                text: data['adminEmployed']
+                html: adminEmployed
               },
               actions: {
                 items: [
@@ -122,7 +132,7 @@
                 text: "Which route they took to qualify as a teacher?"
               },
               value: {
-                text: data['adminRoute']
+                html: adminRoute
               },
               actions: {
                 items: [
@@ -139,7 +149,7 @@
                 text: "Which subject they have a specialised qualification in?"
               },
               value: {
-                text: data['adminQualification']
+                html: adminQualification
               },
               actions: {
                 items: [
