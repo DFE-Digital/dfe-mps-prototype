@@ -15,10 +15,17 @@ $govuk-global-styles: true;
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 .wide .govuk-summary-list__row .govuk-summary-list__key {
-  width: 80% !important;
+  width: 68%;
 }
+
 .wide .govuk-summary-list__row .govuk-summary-list__value {
-  display: none !important;
+  width: 20%;
 }
 
+.wide .govuk-summary-list__row .govuk-summary-list__actions {
+  width: 12%;
+}
 
+.answer-incomplete {
+  color: #b10e1e;
+}
