@@ -1,0 +1,70 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+
+{% block beforeContent %}
+  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+         Check teacher claims
+      </h1>
+      <p class="govuk-body">These teachers have applied to claim a retention payment.</p>
+
+      <p class="govuk-body">To process the claims, we need you to check:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>they qualified as a teacher on or after 1 September 2014</li>
+        <li>they worked at Moorside High School during the claim period</li>
+        <li>which subject they were originally employed to teach at Moorside High School</li>
+        <li>which route they took to qualify as a teacher</li>
+        <li>which subject they have a specialised teaching qualification in</li>
+      </ul>
+
+      <p class="govuk-body">The teachers listed have given us permission to check these details with you.</p>
+
+      <ol class="app-task-list govuk-!-margin-top-9">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span>To be completed (1)
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="claim-teacher-1.html" aria-describedby="eligibility-completed">
+                Jane Jones<span class="date-applied">Due by 11 Feb 2019</span>
+              </a>
+              <strong class="govuk-tag app-task-list__task" id="eligibility-completed">To Do</strong>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Completed claims (1)
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              Ian Roberts<span class="date-applied">Completed on 05 Dec 2018</span>
+              <strong class="govuk-tag app-task-list__task-completed" id="company-information-completed">Completed</strong>
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+
+{% endblock %}

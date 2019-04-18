@@ -1,0 +1,178 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {% from "back-link/macro.njk" import govukBackLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "claims"
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Retention payment claim details:</h1>
+
+      <form method="POST" action="confirmation">
+        {% from "summary-list/macro.njk" import govukSummaryList %}
+
+        <h2 class="govuk-heading-m">Teacher details</h2>
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+            {
+              key: {
+                text: "Teacher name"
+              },
+              value: {
+                text: "Jane Jones"
+              }
+            },
+            {
+              key: {
+                text: "Teacher reference number (TRN)"
+              },
+              value: {
+                text: "2316748"
+              }
+            },
+            {
+              key: {
+                text: "School"
+              },
+              value: {
+                text: "Moorside High School"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">Claim details for Jane Jones</h2>
+        {% set adminQts = data['adminQts'] if data['adminQts'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {% set adminConfirmWorked = data['adminConfirmWorked'] if data['adminConfirmWorked'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {% set adminEmployed = data['adminEmployed'] if data['adminEmployed'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {% set adminRoute = data['adminRoute'] if data['adminRoute'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {% set adminQualification = data['adminQualification'] if data['adminQualification'] else '<p class="answer-incomplete">Incomplete</p>' %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9 wide',
+          rows: [
+            {
+              key: {
+                text: "Did they qualify as a teacher on or after 1 September 2014?"
+              },
+              value: {
+                html: adminQts
+              },
+              actions: {
+                items: [
+                  {
+                    href: "confirm-qts.html",
+                    text: "Update",
+                    visuallyHiddenText: "qualified date"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Did they work at the school between 1 September 2017 and 31 August 2018?"
+              },
+              value: {
+                html: adminConfirmWorked
+              },
+              actions: {
+                items: [
+                  {
+                    href: "confirm-worked.html",
+                    text: "Update",
+                    visuallyHiddenText: "school"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Which subject were they originally employed to teach at Moorside High School?"
+              },
+              value: {
+                html: adminEmployed
+              },
+              actions: {
+                items: [
+                  {
+                    href: "employed-intent.html",
+                    text: "Update",
+                    visuallyHiddenText: "subject"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Which route they took to qualify as a teacher?"
+              },
+              value: {
+                html: adminRoute
+              },
+              actions: {
+                items: [
+                  {
+                    href: "confirm-route.html",
+                    text: "Update",
+                    visuallyHiddenText: "route"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Which subject they have a specialised qualification in?"
+              },
+              value: {
+                html: adminQualification
+              },
+              actions: {
+                items: [
+                  {
+                    href: "confirm-qualification.html",
+                    text: "Update",
+                    visuallyHiddenText: "qualification"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">Confirm the claim</h2>
+        <p>By submitting this form you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+        {{ govukButton({
+          text: "Confirm and send",
+          preventDoubleClick: true
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

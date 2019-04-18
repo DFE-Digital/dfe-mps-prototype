@@ -11,3 +11,54 @@ $govuk-canvas-background-colour: $govuk-body-background-colour;
 
 // If you need to create a page as part of your journey, but without GOV.UK branding
 // See localhost:3000/docs/examples/blank-unbranded
+.govuk-template__body {
+  background-color: #dee0e2;
+}
+.govuk-email-header {
+  background-color: #000;
+  border-bottom: 10px solid #005ea5;
+  font-family: Helvetica,Arial,sans-serif;
+  padding: 4px 0;
+  width: 100%;
+
+  a {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  img {
+    margin: 6px 6px 0 20px;
+    width: 30px;
+  }
+}
+.govuk-email-header--service {
+  border-bottom: 1px solid #808080;
+  display: flex;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  padding: 10px 0;
+}
+.govuk-email-body {
+  padding: 25px 20px 20px;
+}
+.service-logo {
+  border-left: 2px solid #003a69;
+  height: 26px;
+  margin: 5px 10px 0 20px;
+  padding-left: 6px;
+}
+.service-name {
+  padding: 10px 0;
+}
+.email {
+  background-color: #fff;
+  padding: 0;
+}
+.pad-top-20 {
+  padding-top: 20px;
+}
+.gov-crest {
+  max-width: 160px;
+}
