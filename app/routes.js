@@ -79,4 +79,15 @@ router.post('/teacher-qualified-teach-first-ske', function (req, res) {
   }
 })
 
+// Prototype E
+router.post('/e/teacher-when', function (req, res) {
+  let eligible = req.session.data['eligible']
+
+  if (eligible === 'false') {
+    res.redirect('/e/ineligible')
+  } else {
+    res.redirect('/e/teacher-route')
+  }
+})
+
 module.exports = router
