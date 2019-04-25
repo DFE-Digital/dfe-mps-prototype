@@ -9,13 +9,13 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-qualified">
+      <form method="POST" action="teacher-subject">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "qualification-route",
-          name: "qualification-route",
+          idPrefix: "qualificationRoute",
+          name: "qualificationRoute",
           fieldset: {
             legend: {
               text: "Via which route did you qualify as a teacher?",
@@ -26,7 +26,10 @@
           items: [
             {
               value: "pgce",
-              text: "PGCE"
+              text: "PGCE",
+              attributes: {
+                required: "true"
+              }
             },
             {
               value: "school-direct",
