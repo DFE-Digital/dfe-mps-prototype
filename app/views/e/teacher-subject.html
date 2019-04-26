@@ -9,12 +9,12 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-location">
+      <form method="POST" action="teacher-subject">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "teaching-qualified",
+          idPrefix: "teachingSubject",
           name: "teachingSubject",
           fieldset: {
             legend: {

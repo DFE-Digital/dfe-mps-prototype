@@ -90,23 +90,33 @@ router.post('/e/teacher-when', function (req, res) {
   }
 })
 
-router.post('/e/teacher-location', function (req, res) {
+router.post('/e/teacher-route', function (req, res) {
+  let qualificationRoute = req.session.data['qualificationRoute']
+
+  if (qualificationRoute === 'false') {
+    res.redirect('/e/ineligible')
+  } else {
+    res.redirect('/e/teacher-subject')
+  }
+})
+
+router.post('/e/teacher-subject', function (req, res) {
   let teachingSubject = req.session.data['teachingSubject']
 
   if (teachingSubject === 'false') {
     res.redirect('/e/ineligible')
   } else {
-    res.redirect('/e/teacher-location')
+    res.redirect('/e/teacher-school')
   }
 })
 
-router.get('/e/teacher-location', function (req, res) {
+router.get('/e/teacher-school', function (req, res) {
   var schoolData = require('./data/gias_all.min.json')
   var schoolList = schoolData.map(function (school) {
     return school.est_name
   })
 
-  res.render('e/teacher-location', { 'schoolList': schoolList })
+  res.render('teacher-school', { 'schoolList': schoolList })
 })
 
 module.exports = router
