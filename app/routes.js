@@ -100,4 +100,13 @@ router.post('/e/teacher-location', function (req, res) {
   }
 })
 
+router.get('/e/teacher-location', function (req, res) {
+  var schoolData = require('./data/gias_all.min.json')
+  var schoolList = schoolData.map(function (school) {
+    return school.est_name
+  })
+
+  res.render('e/teacher-location', { 'schoolList': schoolList })
+})
+
 module.exports = router
