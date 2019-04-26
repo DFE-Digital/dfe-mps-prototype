@@ -9,21 +9,21 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-nin">
+      <form method="POST" action="teacher-payment-method">
         {% from "input/macro.njk" import govukInput %}
         {% from "button/macro.njk" import govukButton %}
 
         {{ govukInput({
           label: {
-            text: "What's your teacher reference number?",
+            text: "What's your National Insurance number?",
             classes: "govuk-label--xl",
             isPageHeading: true
           },
           hint: {
-            text: "This is on the certificate you got when you qualified as a teacher, or your school can tell you."
+            text: "Do we need to tell the teacher why we need this???"
           },
-          id: "trn",
-          name: "trn"
+          id: "nin",
+          name: "nin"
         }) }}
 
         {{ govukButton({
