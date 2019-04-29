@@ -10,9 +10,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="POST" action="teacher-payment-method">
-        {% from "input/macro.njk" import govukInput %}
-        {% from "button/macro.njk" import govukButton %}
-
         {{ govukInput({
           label: {
             text: "What's your National Insurance number?",
@@ -20,10 +17,14 @@
             isPageHeading: true
           },
           hint: {
-            text: "Do we need to tell the teacher why we need this???"
+            text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
           },
-          id: "nin",
-          name: "nin"
+          classes: "govuk-input--width-10",
+          id: "national-insurance-number",
+          name: "national-insurance-number",
+          attributes: {
+            spellcheck: "false"
+          }
         }) }}
 
         {{ govukButton({
