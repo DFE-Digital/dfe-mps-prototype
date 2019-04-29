@@ -20,37 +20,51 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="POST" action="teacher-check-answers">
-        {% from "radios/macro.njk" import govukRadios %}
+        {% from "checkboxes/macro.njk" import govukCheckboxes %}
         {% from "input/macro.njk" import govukInput %}
 
         {% set emailAddress %}
         {{ govukInput({
-          id: "email-address",
-          name: "email-address",
+          id: "contactEmail",
+          name: "contactEmail",
           type: "email",
-          classes: "govuk-!-width-one-half",
+          classes: "govuk-!-width-one-third",
           label: {
-            text: "Enter email address"
+            text: "Email address"
+          },
+          attributes: {
+            spellcheck: "false"
           }
         }) }}
         {% endset -%}
 
-        {% set mobileNumber %}
+        {% set phoneNumber %}
         {{ govukInput({
-          id: "mobile-number",
-          name: "mobile-number",
+          id: "contactPhone",
+          name: "contactPhone",
           type: "tel",
           classes: "govuk-!-width-one-third",
           label: {
-            text: "Enter mobile number"
+            text: "Phone number"
           }
         }) }}
         {% endset -%}
 
-        {{ govukRadios({
-          classes: "govuk-radios",
-          idPrefix: "contact-method",
-          name: "contact-method",
+        {% set textNumber %}
+        {{ govukInput({
+          id: "contactText",
+          name: "contactText",
+          type: "tel",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Mobile phone number"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+          idPrefix: "contactMethod",
+          name: "contactMethod",
           fieldset: {
             legend: {
               text: "How do you want us to contact you?",
@@ -58,7 +72,7 @@
               classes: "govuk-fieldset__legend--xl"
             }
           },
-          hint :{
+          hint: {
             text: "We'll only use these details to update you about your claim."
           },
           items: [
@@ -70,10 +84,17 @@
               }
             },
             {
-              value: "text-message",
+              value: "phone",
+              text: "Phone",
+              conditional: {
+                html: phoneNumber
+              }
+            },
+            {
+              value: "text message",
               text: "Text message",
               conditional: {
-                html: mobileNumber
+                html: textNumber
               }
             }
           ]
