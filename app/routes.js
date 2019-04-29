@@ -73,4 +73,14 @@ router.post('/teacher-supply', function (req, res) {
   }
 })
 
+router.post('/teacher-action', function (req, res) {
+  let teacherAction = req.session.data['teacherAction']
+
+  if (teacherAction === 'false') {
+    res.redirect('/teacher-reference-number')
+  } else {
+    res.redirect('/ineligible-action')
+  }
+})
+
 module.exports = router
