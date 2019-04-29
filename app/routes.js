@@ -33,31 +33,15 @@ router.post('/teacher-subject', function (req, res) {
   }
 })
 
-// router.post('/teacher-qualified', function (req, res) {
-//   let qualificationRoute = req.session.data['qualification-route']
+router.post('/teacher-qualified-teach-first-ske', function (req, res) {
+  let teachFirstSke = req.session.data['teach-first-ske']
 
-//   let question = ''
-
-//   switch (qualificationRoute) {
-//     case 'pgce' :
-//       question = 'What subject did you specialise in during your PGCE?'
-//       break
-
-//     case 'school-direct' :
-//       question = 'What subject did you specialise in during your School Direct teacher training?'
-//       break
-
-//     case 'scitt' :
-//       question = 'What subject did you specialise in during your School-centred initial teacher training?'
-//       break
-
-//     case 'teach-first' :
-//       question = 'What subject did you specialise in during your Teach First initial teacher training?'
-//       break
-//   }
-
-//   res.render('teacher-qualified', { 'questionText': question })
-// })
+  if (teachFirstSke === 'false') {
+    res.redirect('/ineligible')
+  } else {
+    res.redirect('/teacher-location')
+  }
+})
 
 router.post('/teacher-location', function (req, res) {
   let qualifiedSubject = req.session.data['qualified-subject']
@@ -79,13 +63,13 @@ router.get('/teacher-location', function (req, res) {
   res.render('teacher-location', { 'schoolList': schoolList })
 })
 
-router.post('/teacher-qualified-teach-first-ske', function (req, res) {
-  let teachFirstSke = req.session.data['teach-first-ske']
+router.post('/teacher-supply', function (req, res) {
+  let supplyTeacher = req.session.data['supplyTeacher']
 
-  if (teachFirstSke === 'false') {
-    res.redirect('/ineligible')
+  if (supplyTeacher === 'true') {
+    res.redirect('/other-question')
   } else {
-    res.redirect('/teacher-location')
+    res.redirect('/teacher-action')
   }
 })
 
