@@ -17,7 +17,7 @@ router.post('/teacher-route', function (req, res) {
   let qualificationRoute = req.session.data['qualificationRoute']
 
   if (qualificationRoute === 'false') {
-    res.redirect('/ineligible')
+    res.redirect('/teacher-qualified-teach-first-ske')
   } else {
     res.redirect('/teacher-subject')
   }
