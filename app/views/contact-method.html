@@ -19,7 +19,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-check-answers">
+      <form method="POST" action="check-answers">
         {% from "checkboxes/macro.njk" import govukCheckboxes %}
         {% from "input/macro.njk" import govukInput %}
 
@@ -34,18 +34,6 @@
           },
           attributes: {
             spellcheck: "false"
-          }
-        }) }}
-        {% endset -%}
-
-        {% set phoneNumber %}
-        {{ govukInput({
-          id: "contactPhone",
-          name: "contactPhone",
-          type: "tel",
-          classes: "govuk-!-width-one-third",
-          label: {
-            text: "Phone number"
           }
         }) }}
         {% endset -%}
@@ -81,13 +69,6 @@
               text: "Email",
               conditional: {
                 html: emailAddress
-              }
-            },
-            {
-              value: "phone",
-              text: "Phone",
-              conditional: {
-                html: phoneNumber
               }
             },
             {
