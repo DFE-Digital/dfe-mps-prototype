@@ -2,7 +2,17 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-When did you qualify as a teacher?
+  DfE Maths and Physics Service Prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -25,7 +35,10 @@ When did you qualify as a teacher?
         items: [
           {
             value: "true",
-            text: "On or after 1 September 2014"
+            text: "On or after 1 September 2014",
+            attributes: {
+              required: "true"
+            }
           },
           {
             value: "false",

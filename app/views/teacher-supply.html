@@ -5,30 +5,20 @@
   DfE Maths and Physics Service Prototype
 {% endblock %}
 
-{% block beforeContent %}
-  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-{% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-route">
+      <form method="POST" action="teacher-supply">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "qualificationRoute",
-          name: "qualificationRoute",
+          idPrefix: "supplyTeacher",
+          name: "supplyTeacher",
           fieldset: {
             legend: {
-              text: "Via which route did you qualify as a teacher?",
+              text: "Are you currently employed as a supply teacher?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -36,22 +26,14 @@
           items: [
             {
               value: "true",
-              text: "PGCE",
+              text: "Yes",
               attributes: {
                 required: "true"
               }
             },
             {
-              value: "true",
-              text: "School Direct"
-            },
-            {
-              value: "true",
-              text: "SCITT"
-            },
-            {
               value: "false",
-              text: "Teach First"
+              text: "No"
             }
           ]
         }) }}
