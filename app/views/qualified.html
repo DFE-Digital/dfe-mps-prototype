@@ -9,20 +9,22 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-location">
+      <form method="POST" action="qualified">
         {% from "radios/macro.njk" import govukRadios %}
-        {% set legendQuestion =  questionText %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "qualified-subject",
-          name: "qualified-subject",
+          idPrefix: "qualified",
+          name: "qualified",
           fieldset: {
             legend: {
-              text: legendQuestion,
+              text: "Are you qualified to teach Mathamatics and/or Physics?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
+          },
+          hint: {
+            text: "Includes science teachers with a Subject Knowledge Enhancement in Physics"
           },
           items: [
             {
