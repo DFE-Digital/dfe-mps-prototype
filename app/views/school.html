@@ -20,17 +20,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Where are you currently employed to teach?
+        Which shcool are you currently employed to teach at?
       </h1>
 
-      <form method="POST" action="teacher-employed">
-        {% from "details/macro.njk" import govukDetails %}
-
-        {{ govukDetails({
-          summaryText: "You taught at more than one school",
-          text: "For now, enter one of the schools you've taught at. You can check another school when you've finished."
-        }) }}
-
+      <form method="POST" action="action">
         {% from "input/macro.njk" import govukInput %}
 
         <label class="govuk-label" for="schoolName">Enter the school name</label>
