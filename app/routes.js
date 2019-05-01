@@ -17,7 +17,7 @@ router.post('/supply-teacher-term', function (req, res) {
   let supplyTeacherTerm = req.session.data['supplyTeacherTerm']
 
   if (supplyTeacherTerm === 'false') {
-    res.redirect('/ineligible')
+    res.redirect('/ineligible-term')
   } else {
     res.redirect('/private-agency')
   }
@@ -29,7 +29,7 @@ router.post('/private-agency', function (req, res) {
   if (supplyTeacherAgency === 'false') {
     res.redirect('/qualified')
   } else {
-    res.redirect('/ineligible')
+    res.redirect('/ineligible-agency')
   }
 })
 
@@ -37,7 +37,7 @@ router.post('/qualified', function (req, res) {
   let qualified = req.session.data['qualified']
 
   if (qualified === 'false') {
-    res.redirect('/ineligible')
+    res.redirect('/ineligible-qualified')
   } else {
     res.redirect('/subject')
   }
@@ -47,7 +47,7 @@ router.post('/subject', function (req, res) {
   let teachingSubject = req.session.data['teachingSubject']
 
   if (teachingSubject === 'false') {
-    res.redirect('/ineligible')
+    res.redirect('/ineligible-subject')
   } else {
     res.redirect('/awarded')
   }
@@ -57,7 +57,7 @@ router.post('/awarded', function (req, res) {
   let awarded = req.session.data['awarded']
 
   if (awarded === 'false') {
-    res.redirect('/ineligible')
+    res.redirect('/ineligible-awarded')
   } else {
     res.redirect('/school')
   }
@@ -82,7 +82,7 @@ router.post('/disciplinary', function (req, res) {
   if (teacherAction === 'false') {
     res.redirect('/verify')
   } else {
-    res.redirect('/ineligible-action')
+    res.redirect('/ineligible-disciplinary')
   }
 })
 
