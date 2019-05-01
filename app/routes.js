@@ -6,7 +6,7 @@ const router = express.Router()
 router.post('/supply-teacher', function (req, res) {
   let supplyTeacher = req.session.data['supplyTeacher']
 
-  if (supplyTeacher === 'false') {
+  if (supplyTeacher === 'No') {
     res.redirect('/qualified')
   } else {
     res.redirect('/supply-teacher-term')
@@ -16,7 +16,7 @@ router.post('/supply-teacher', function (req, res) {
 router.post('/supply-teacher-term', function (req, res) {
   let supplyTeacherTerm = req.session.data['supplyTeacherTerm']
 
-  if (supplyTeacherTerm === 'false') {
+  if (supplyTeacherTerm === 'No') {
     res.redirect('/ineligible-term')
   } else {
     res.redirect('/private-agency')
@@ -26,7 +26,7 @@ router.post('/supply-teacher-term', function (req, res) {
 router.post('/private-agency', function (req, res) {
   let supplyTeacherAgency = req.session.data['supplyTeacherAgency']
 
-  if (supplyTeacherAgency === 'false') {
+  if (supplyTeacherAgency === 'No') {
     res.redirect('/qualified')
   } else {
     res.redirect('/ineligible-agency')
@@ -36,7 +36,7 @@ router.post('/private-agency', function (req, res) {
 router.post('/qualified', function (req, res) {
   let qualified = req.session.data['qualified']
 
-  if (qualified === 'false') {
+  if (qualified === 'No') {
     res.redirect('/ineligible-qualified')
   } else {
     res.redirect('/subject')
@@ -46,7 +46,7 @@ router.post('/qualified', function (req, res) {
 router.post('/subject', function (req, res) {
   let teachingSubject = req.session.data['teachingSubject']
 
-  if (teachingSubject === 'false') {
+  if (teachingSubject === 'No') {
     res.redirect('/ineligible-subject')
   } else {
     res.redirect('/awarded')
@@ -56,7 +56,7 @@ router.post('/subject', function (req, res) {
 router.post('/awarded', function (req, res) {
   let awarded = req.session.data['awarded']
 
-  if (awarded === 'false') {
+  if (awarded === 'Before 1 September 2014') {
     res.redirect('/ineligible-awarded')
   } else {
     res.redirect('/school')
@@ -79,7 +79,7 @@ router.post('/school', function (req, res) {
 router.post('/disciplinary', function (req, res) {
   let teacherAction = req.session.data['teacherAction']
 
-  if (teacherAction === 'false') {
+  if (teacherAction === 'No') {
     res.redirect('/verify')
   } else {
     res.redirect('/ineligible-disciplinary')
