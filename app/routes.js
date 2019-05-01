@@ -72,7 +72,11 @@ router.get('/school', function (req, res) {
   res.render('school', { 'schoolList': schoolList })
 })
 
-router.post('/action', function (req, res) {
+router.post('/school', function (req, res) {
+  res.redirect('/disciplinary')
+})
+
+router.post('/disciplinary', function (req, res) {
   let teacherAction = req.session.data['teacherAction']
 
   if (teacherAction === 'false') {
