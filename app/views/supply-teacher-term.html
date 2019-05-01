@@ -5,30 +5,20 @@
   DfE Maths and Physics Service Prototype
 {% endblock %}
 
-{% block beforeContent %}
-  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-{% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-qualified-teach-first-ske">
+      <form method="POST" action="supply-teacher-term">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "teach-first-ske",
-          name: "teach-first-ske",
+          idPrefix: "supplyTeacherTerm",
+          name: "supplyTeacherTerm",
           fieldset: {
             legend: {
-              text: "Did you complete a Physics 'Subject Knowledge Enhancement'? ",
+              text: "Are you employed as a supply teacher for more than one term?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -36,7 +26,10 @@
           items: [
             {
               value: "true",
-              text: "Yes"
+              text: "Yes",
+              attributes: {
+                required: "true"
+              }
             },
             {
               value: "false",

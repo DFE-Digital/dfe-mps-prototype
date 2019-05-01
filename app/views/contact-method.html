@@ -5,21 +5,11 @@
   DfE Maths and Physics Service Prototype
 {% endblock %}
 
-{% block beforeContent %}
-  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-{% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-check-answers">
+      <form method="POST" action="check-answers">
         {% from "checkboxes/macro.njk" import govukCheckboxes %}
         {% from "input/macro.njk" import govukInput %}
 
@@ -34,18 +24,6 @@
           },
           attributes: {
             spellcheck: "false"
-          }
-        }) }}
-        {% endset -%}
-
-        {% set phoneNumber %}
-        {{ govukInput({
-          id: "contactPhone",
-          name: "contactPhone",
-          type: "tel",
-          classes: "govuk-!-width-one-third",
-          label: {
-            text: "Phone number"
           }
         }) }}
         {% endset -%}
@@ -81,13 +59,6 @@
               text: "Email",
               conditional: {
                 html: emailAddress
-              }
-            },
-            {
-              value: "phone",
-              text: "Phone",
-              conditional: {
-                html: phoneNumber
               }
             },
             {

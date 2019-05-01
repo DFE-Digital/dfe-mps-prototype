@@ -3,81 +3,84 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
-router.post('/teacher-when', function (req, res) {
-  let eligible = req.session.data['eligible']
+router.post('/supply-teacher', function (req, res) {
+  let supplyTeacher = req.session.data['supplyTeacher']
 
-  if (eligible === 'false') {
+  if (supplyTeacher === 'false') {
+    res.redirect('/qualified')
+  } else {
+    res.redirect('/supply-teacher-term')
+  }
+})
+
+router.post('/supply-teacher-term', function (req, res) {
+  let supplyTeacherTerm = req.session.data['supplyTeacherTerm']
+
+  if (supplyTeacherTerm === 'false') {
     res.redirect('/ineligible')
   } else {
-    res.redirect('/teacher-route')
+    res.redirect('/private-agency')
   }
 })
 
-router.post('/teacher-route', function (req, res) {
-  let qualificationRoute = req.session.data['qualificationRoute']
+router.post('/private-agency', function (req, res) {
+  let supplyTeacherAgency = req.session.data['supplyTeacherAgency']
 
-  if (qualificationRoute === 'false') {
-    res.redirect('/teacher-qualified-teach-first-ske')
+  if (supplyTeacherAgency === 'false') {
+    res.redirect('/qualified')
   } else {
-    res.redirect('/teacher-subject')
+    res.redirect('/ineligible')
   }
 })
 
-router.post('/teacher-subject', function (req, res) {
+router.post('/qualified', function (req, res) {
+  let qualified = req.session.data['qualified']
+
+  if (qualified === 'false') {
+    res.redirect('/ineligible')
+  } else {
+    res.redirect('/subject')
+  }
+})
+
+router.post('/subject', function (req, res) {
   let teachingSubject = req.session.data['teachingSubject']
 
   if (teachingSubject === 'false') {
     res.redirect('/ineligible')
   } else {
-    res.redirect('/teacher-location')
+    res.redirect('/awarded')
   }
 })
 
-router.post('/teacher-qualified-teach-first-ske', function (req, res) {
-  let teachFirstSke = req.session.data['teach-first-ske']
+router.post('/awarded', function (req, res) {
+  let awarded = req.session.data['awarded']
 
-  if (teachFirstSke === 'false') {
+  if (awarded === 'false') {
     res.redirect('/ineligible')
   } else {
-    res.redirect('/teacher-location')
+    res.redirect('/school')
   }
 })
 
-router.post('/teacher-location', function (req, res) {
-  let qualifiedSubject = req.session.data['qualified-subject']
-  let qualificationRoute = req.session.data['qualification-route']
-
-  if (qualificationRoute === 'teach-first' && qualifiedSubject === 'science') {
-    res.redirect('/teacher-qualified-teach-first-ske')
-  } else {
-    res.redirect('/teacher-location')
-  }
-})
-
-router.get('/teacher-location', function (req, res) {
+router.get('/school', function (req, res) {
   var schoolData = require('./data/gias_all.min.json')
   var schoolList = schoolData.map(function (school) {
     return school.est_name
   })
 
-  res.render('teacher-location', { 'schoolList': schoolList })
+  res.render('school', { 'schoolList': schoolList })
 })
 
-router.post('/teacher-supply', function (req, res) {
-  let supplyTeacher = req.session.data['supplyTeacher']
-
-  if (supplyTeacher === 'true') {
-    res.redirect('/other-question')
-  } else {
-    res.redirect('/teacher-action')
-  }
+router.post('/school', function (req, res) {
+  res.redirect('/disciplinary')
 })
 
-router.post('/teacher-action', function (req, res) {
+router.post('/disciplinary', function (req, res) {
   let teacherAction = req.session.data['teacherAction']
 
   if (teacherAction === 'false') {
-    res.redirect('/teacher-reference-number')
+    res.redirect('/verify')
   } else {
     res.redirect('/ineligible-action')
   }
