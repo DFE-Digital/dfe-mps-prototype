@@ -6,13 +6,13 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+
+  {% from "back-link/macro.njk" import govukBackLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "claims"
   }) }}
+
 {% endblock %}
 
 {% block content %}
@@ -20,11 +20,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Verify page
+        Prove your identity to continue
       </h1>
+      <p class="govuk-body"></p>
 
-      <a href="" class="govuk-button">Verify</a>
-      <p class="govuk-body"><a href="teacher-reference-number" class="govuk-link govuk-link--no-visited-state">Skip Verify</a></p>
+      <h2 class="govuk-heading-m">Use GOV.UK Verify</h2>
+
+      <p class="govuk-body">Registering with GOV.UK Verify usually takes about 15 minutes. It works best if you have:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a UK address</li>
+        <li>a valid passport or photocard driving licence</li>
+      </ul>
+
+      <p class="govuk-body">A certified identity provider will check your indentity when you register with GOV.UK Verify. They've all met security standards set by government.</p>
+
+      <a href="https://govuk-verify.herokuapp.com/intro?requestId=claim-retention-payments" class="govuk-button">Use GOV.UK Verify</a>
+      <p class="govuk-body"><a href="/teacher-reference-number" class="govuk-link govuk-link--no-visited-state">Skip Verify</a></p>
     </div>
   </div>
 
