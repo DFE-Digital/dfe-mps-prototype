@@ -88,6 +88,22 @@
         </div>
         {% endif %}
 
+        {% if data['degree'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Did you complete a degree?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['degree'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/degree">
+              Change<span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
         {% if data['teachingSubject'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
