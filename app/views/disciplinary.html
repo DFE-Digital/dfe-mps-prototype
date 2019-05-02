@@ -9,27 +9,30 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-qualified-teach-first-ske">
+      <form method="POST" action="disciplinary">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "teach-first-ske",
-          name: "teach-first-ske",
+          idPrefix: "teacherAction",
+          name: "teacherAction",
           fieldset: {
             legend: {
-              text: "Did you complete a Physics 'Subject Knowledge Enhancement'? ",
+              text: "Are you currently subject to formal capability proceedings or disciplinary action?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           items: [
             {
-              value: "true",
-              text: "Yes"
+              value: "Yes",
+              text: "Yes",
+              attributes: {
+                required: "true"
+              }
             },
             {
-              value: "false",
+              value: "No",
               text: "No"
             }
           ]

@@ -9,27 +9,33 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-still-teaching">
+      <form method="POST" action="subject">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "still-teaching",
-          name: "still-teaching",
+          idPrefix: "teachingSubject",
+          name: "teachingSubject",
           fieldset: {
             legend: {
-              text: "Are you still teaching at a school in the UK?",
+              text: "Do you currently teach Mathematics and/or Physics?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
+          hint: {
+            text: "You can teach Mathematics/Physics as part of a broader curriculum"
+          },
           items: [
             {
-              value: "true",
-              text: "Yes"
+              value: "Yes",
+              text: "Yes",
+              attributes: {
+                required: "true"
+              }
             },
             {
-              value: "false",
+              value: "No",
               text: "No"
             }
           ]

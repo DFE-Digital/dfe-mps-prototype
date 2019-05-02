@@ -3,79 +3,86 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
-router.post('/teacher-when', function (req, res) {
-  let eligible = req.session.data['eligible']
+router.post('/supply-teacher', function (req, res) {
+  let supplyTeacher = req.session.data['supplyTeacher']
 
-  if (eligible === 'false') {
-    res.redirect('/ineligible')
+  if (supplyTeacher === 'No') {
+    res.redirect('/qualified')
   } else {
-    res.redirect('/teacher-still-teaching')
+    res.redirect('/supply-teacher-term')
   }
 })
 
-router.post('/teacher-still-teaching', function (req, res) {
-  let stillTeaching = req.session.data['still-teaching']
+router.post('/supply-teacher-term', function (req, res) {
+  let supplyTeacherTerm = req.session.data['supplyTeacherTerm']
 
-  if (stillTeaching === 'false') {
-    res.redirect('/ineligible')
+  if (supplyTeacherTerm === 'No') {
+    res.redirect('/ineligible-term')
   } else {
-    res.redirect('/teacher-route')
+    res.redirect('/private-agency')
   }
 })
 
-router.post('/teacher-qualified', function (req, res) {
-  let qualificationRoute = req.session.data['qualification-route']
+router.post('/private-agency', function (req, res) {
+  let supplyTeacherAgency = req.session.data['supplyTeacherAgency']
 
-  let question = ''
-
-  switch (qualificationRoute) {
-    case 'pgce' :
-      question = 'What subject did you specialise in during your PGCE?'
-      break
-
-    case 'school-direct' :
-      question = 'What subject did you specialise in during your School Direct teacher training?'
-      break
-
-    case 'scitt' :
-      question = 'What subject did you specialise in during your School-centred initial teacher training?'
-      break
-
-    case 'teach-first' :
-      question = 'What subject did you specialise in during your Teach First initial teacher training?'
-      break
-  }
-
-  res.render('teacher-qualified', { 'questionText': question })
-})
-
-router.post('/teacher-location', function (req, res) {
-  let qualifiedSubject = req.session.data['qualified-subject']
-  let qualificationRoute = req.session.data['qualification-route']
-
-  if (qualificationRoute === 'teach-first' && qualifiedSubject === 'science') {
-    res.redirect('/teacher-qualified-teach-first-ske')
+  if (supplyTeacherAgency === 'No') {
+    res.redirect('/qualified')
   } else {
-    res.redirect('/teacher-location')
+    res.redirect('/ineligible-agency')
   }
 })
 
-router.get('/teacher-location', function (req, res) {
+router.post('/qualified', function (req, res) {
+  let qualified = req.session.data['qualified']
+
+  if (qualified === 'No') {
+    res.redirect('/ineligible-qualified')
+  } else {
+    res.redirect('/subject')
+  }
+})
+
+router.post('/subject', function (req, res) {
+  let teachingSubject = req.session.data['teachingSubject']
+
+  if (teachingSubject === 'No') {
+    res.redirect('/ineligible-subject')
+  } else {
+    res.redirect('/awarded')
+  }
+})
+
+router.post('/awarded', function (req, res) {
+  let awarded = req.session.data['awarded']
+
+  if (awarded === 'Before 1 September 2014') {
+    res.redirect('/ineligible-awarded')
+  } else {
+    res.redirect('/school')
+  }
+})
+
+router.get('/school', function (req, res) {
   var schoolData = require('./data/gias_all.min.json')
   var schoolList = schoolData.map(function (school) {
     return school.est_name
   })
 
-  res.render('teacher-location', { 'schoolList': schoolList })
+  res.render('school', { 'schoolList': schoolList })
 })
 
-router.post('/teacher-qualified-teach-first-ske', function (req, res) {
-  let teachFirstSke = req.session.data['teach-first-ske']
+router.post('/school', function (req, res) {
+  res.redirect('/disciplinary')
+})
 
-  if (teachFirstSke === 'false') {
-    res.redirect('/ineligible')
+router.post('/disciplinary', function (req, res) {
+  let teacherAction = req.session.data['teacherAction']
+
+  if (teacherAction === 'No') {
+    res.redirect('/verify')
   } else {
-    res.redirect('/teacher-location')
+    res.redirect('/ineligible-disciplinary')
   }
 })
 

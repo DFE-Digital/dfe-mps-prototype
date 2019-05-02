@@ -14,16 +14,20 @@ $govuk-global-styles: true;
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
-.wide .govuk-summary-list__row .govuk-summary-list__key {
-  width: 68%;
-}
+// Changed widths because the check answers screen shows all the
+// questions and some are quite long
+@include govuk-media-query($from: tablet) {
+  .govuk-summary-list__row .govuk-summary-list__key {
+    width: 55%;
+  }
 
-.wide .govuk-summary-list__row .govuk-summary-list__value {
-  width: 20%;
-}
+  .govuk-summary-list__row .govuk-summary-list__value {
+    width: 30%;
+  }
 
-.wide .govuk-summary-list__row .govuk-summary-list__actions {
-  width: 12%;
+  .govuk-summary-list__row .govuk-summary-list__actions {
+    width: 15%;
+  }
 }
 
 .answer-incomplete {

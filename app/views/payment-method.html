@@ -9,7 +9,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-contact-method">
+      <form method="POST" action="contact-method">
         {% from "input/macro.njk" import govukInput %}
         {% from "fieldset/macro.njk" import govukFieldset %}
 
@@ -46,8 +46,8 @@
             hint: {
               text: "For example: 44 00 26"
             },
-            id: "sort-code-1",
-            name: "sort-code-1",
+            id: "sort-code",
+            name: "sort-code",
             pattern: "[0-9]{6}",
             classes: "govuk-!-width-one-quarter"
           }) }}

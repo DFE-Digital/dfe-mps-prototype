@@ -9,36 +9,31 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="teacher-qualified">
+      <form method="POST" action="supply-teacher-term">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "qualification-route",
-          name: "qualification-route",
+          idPrefix: "supplyTeacherTerm",
+          name: "supplyTeacherTerm",
           fieldset: {
             legend: {
-              text: "Via which route did you qualify as a teacher?",
+              text: "Are you employed as a supply teacher for more than one term?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           items: [
             {
-              value: "pgce",
-              text: "PGCE"
+              value: "Yes",
+              text: "Yes",
+              attributes: {
+                required: "true"
+              }
             },
             {
-              value: "school-direct",
-              text: "School Direct"
-            },
-            {
-              value: "scitt",
-              text: "SCITT"
-            },
-            {
-              value: "teach-first",
-              text: "Teach First"
+              value: "No",
+              text: "No"
             }
           ]
         }) }}
