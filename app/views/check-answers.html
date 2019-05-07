@@ -66,13 +66,13 @@
         {% if data['supplyTeacherAgency'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Are you employed directly by the school?
+            Are you employed directly by the school or a private agency?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['supplyTeacherAgency'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/supply-teacher-agency">
+            <a class="govuk-link" href="/private-agency">
               Change<span class="govuk-visually-hidden"> your answer</span>
             </a>
           </dd>
@@ -82,7 +82,7 @@
         {% if data['qualified'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Did you complete an ITT course in Mathematics and Physics?
+            Did you complete an ITT course in Mathematics and/or Physics?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['qualified'] }}
@@ -98,7 +98,7 @@
         {% if data['degree'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Did you complete a degree?
+            Have you completed a UK undergraduate or postgraduate degree in Mathematics or Physics?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['degree'] }}
@@ -146,7 +146,7 @@
         {% if data['school-name'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            School
+            Which school are you currently employed to teach at?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['school-name'] }}
