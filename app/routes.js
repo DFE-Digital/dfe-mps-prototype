@@ -26,7 +26,7 @@ router.post('/supply-teacher-term', function (req, res) {
 router.post('/private-agency', function (req, res) {
   let supplyTeacherAgency = req.session.data['supplyTeacherAgency']
 
-  if (supplyTeacherAgency === 'No') {
+  if (supplyTeacherAgency === 'Yes') {
     res.redirect('/qualified')
   } else {
     res.redirect('/ineligible-agency')
