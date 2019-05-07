@@ -9,8 +9,8 @@ $govuk-global-styles: true;
 @import "patterns/task-list";
 @import "patterns/related-items";
 
-// Components that aren't in Frontend
-@import "components/cookie-banner";
+// Tweaks to Accessible Auto Complete
+@import "components/select-input";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
@@ -34,4 +34,10 @@ $govuk-global-styles: true;
   color: #666;
   display: block;
   font-size: 16px;
+}
+
+.govuk-form-group{
+  li {
+      font-family: "nta", Arial, sans-serif;
+  }
 }
