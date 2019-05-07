@@ -26,7 +26,7 @@ router.post('/supply-teacher-term', function (req, res) {
 router.post('/private-agency', function (req, res) {
   let supplyTeacherAgency = req.session.data['supplyTeacherAgency']
 
-  if (supplyTeacherAgency === 'No') {
+  if (supplyTeacherAgency === 'Yes') {
     res.redirect('/qualified')
   } else {
     res.redirect('/ineligible-agency')
@@ -37,7 +37,17 @@ router.post('/qualified', function (req, res) {
   let qualified = req.session.data['qualified']
 
   if (qualified === 'No') {
-    res.redirect('/ineligible-qualified')
+    res.redirect('/degree')
+  } else {
+    res.redirect('/subject')
+  }
+})
+
+router.post('/degree', function (req, res) {
+  let degree = req.session.data['degree']
+
+  if (degree === 'No') {
+    res.redirect('/ineligible-degree')
   } else {
     res.redirect('/subject')
   }

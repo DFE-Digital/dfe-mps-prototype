@@ -11,6 +11,13 @@
 {% from "phase-banner/macro.njk" import govukPhaseBanner %}
 
 {% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
   {{ govukBackLink({
     text: "Back",
     href: "/contact-method"
@@ -59,7 +66,7 @@
         {% if data['supplyTeacherAgency'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Are you employed as a supply teacher by a private agency?
+            Are you employed directly by the school?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['supplyTeacherAgency'] }}
@@ -75,13 +82,29 @@
         {% if data['qualified'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Are you qualified to teach Mathematics and/or Physics?
+            Did you complete an ITT course in Mathematics and Physics?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['qualified'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/qualified">
+              Change<span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['degree'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Did you complete a degree?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['degree'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/degree">
               Change<span class="govuk-visually-hidden"> your answer</span>
             </a>
           </dd>
@@ -107,7 +130,7 @@
         {% if data['awarded'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            When were you awarded your QTS or QTLS?
+            When did you complete your ITT course?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['awarded'] }}
@@ -161,8 +184,24 @@
             {{ data['trn'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/teacher-reference-number">
+            <a class="govuk-link" href="/reference-number">
               Change<span class="govuk-visually-hidden"> your teacher reference number</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['nin'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What's your National Insurance number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['nin'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/national-insurance-number">
+              Change<span class="govuk-visually-hidden"> your national insurance number</span>
             </a>
           </dd>
         </div>
@@ -178,7 +217,7 @@
             <p class="govuk-body">Sort code:<br>{{ data['sort-code'] }}</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/teacher-reference-number">
+            <a class="govuk-link" href="/payment-method">
               Change<span class="govuk-visually-hidden"> your account details</span>
             </a>
           </dd>
@@ -193,7 +232,7 @@
             {% if data['contactText'] %}<p class="govuk-body">{{ data['contactText'] }}</p>{% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/teacher-reference-number">
+            <a class="govuk-link" href="/contact-method">
               Change<span class="govuk-visually-hidden"> your contact details</span>
             </a>
           </dd>
