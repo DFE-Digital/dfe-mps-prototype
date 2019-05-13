@@ -7,7 +7,7 @@ router.post('/supply-teacher', function (req, res) {
   let supplyTeacher = req.session.data['supplyTeacher']
 
   if (supplyTeacher === 'No') {
-    res.redirect('/qualified')
+    res.redirect('/disciplinary')
   } else {
     res.redirect('/supply-teacher-term')
   }
@@ -26,8 +26,8 @@ router.post('/supply-teacher-term', function (req, res) {
 router.post('/private-agency', function (req, res) {
   let supplyTeacherAgency = req.session.data['supplyTeacherAgency']
 
-  if (supplyTeacherAgency === 'I am contracted by the school') {
-    res.redirect('/qualified')
+  if (supplyTeacherAgency === 'Yes, I am employed by the school') {
+    res.redirect('/disciplinary')
   } else {
     res.redirect('/ineligible-agency')
   }
@@ -39,7 +39,7 @@ router.post('/qualified', function (req, res) {
   if (qualified === 'No') {
     res.redirect('/degree')
   } else {
-    res.redirect('/subject')
+    res.redirect('/awarded')
   }
 })
 
@@ -59,7 +59,7 @@ router.post('/subject', function (req, res) {
   if (teachingSubject === 'No') {
     res.redirect('/ineligible-subject')
   } else {
-    res.redirect('/awarded')
+    res.redirect('/school')
   }
 })
 
@@ -69,7 +69,7 @@ router.post('/awarded', function (req, res) {
   if (awarded === 'Before 1 September 2014') {
     res.redirect('/ineligible-awarded')
   } else {
-    res.redirect('/school')
+    res.redirect('/supply-teacher')
   }
 })
 
@@ -83,7 +83,7 @@ router.get('/school', function (req, res) {
 })
 
 router.post('/school', function (req, res) {
-  res.redirect('/disciplinary')
+  res.redirect('/qualified')
 })
 
 router.post('/disciplinary', function (req, res) {

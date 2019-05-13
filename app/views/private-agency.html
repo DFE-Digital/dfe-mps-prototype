@@ -9,7 +9,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Are you employed directly by the school or a private agency?</h1>
+      <h1 class="govuk-heading-xl">Are you employed directly by your school?</h1>
 
       <form method="POST" action="private-agency">
         {% from "radios/macro.njk" import govukRadios %}
@@ -20,15 +20,15 @@
           name: "supplyTeacherAgency",
           items: [
             {
-              value: "I am contracted by the school",
-              text: "I am contracted by the school",
+              value: "Yes, I am employed by the school",
+              text: "Yes, I am employed by the school",
               attributes: {
                 required: "true"
               }
             },
             {
-              value: "I am contracted by a private agency",
-              text: "I am contracted by a private agency"
+              value: "No, I am employed by a private agency",
+              text: "No, I am employed by a private agency"
             }
           ]
         }) }}
