@@ -49,7 +49,7 @@ router.post('/degree', function (req, res) {
   if (degree === 'No') {
     res.redirect('/ineligible-degree')
   } else {
-    res.redirect('/subject')
+    res.redirect('/awarded')
   }
 })
 
@@ -90,7 +90,7 @@ router.post('/disciplinary', function (req, res) {
   let teacherAction = req.session.data['teacherAction']
 
   if (teacherAction === 'No') {
-    res.redirect('/verify')
+    res.redirect('/eligible-confirmed')
   } else {
     res.redirect('/ineligible-disciplinary')
   }
