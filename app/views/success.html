@@ -17,7 +17,12 @@
         </div>
       </div>
 
-      <p>We have sent you a confirmation email and text.</p>
+      <p>
+        We have sent you a confirmation 
+        {% if data['contactEmail'] %}email to {{ data['contactEmail'] }}{% endif %}{% if data['contactEmail'] and data['contactText']%} and a {% endif %}{% if data['contactText'] %}text to {{ data['contactText'] }}{% endif %}.
+      </p>
+
+     
 
       <h2 class="govuk-heading-m">What happens next</h2>
       
@@ -31,8 +36,11 @@
       </p>
 
       <p>
-        You will receive email and text updates as your application 
-        progresses.
+        You will receive 
+        {% if data['contactEmail'] %}email{% endif %}
+        {% if data['contactEmail'] and data['contactText']%} and {% endif %}
+        {% if data['contactText'] %}text {% endif %}
+        updates as your application progresses.
       </p>
 
       <div class="govuk-inset-text">
