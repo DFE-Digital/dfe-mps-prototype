@@ -30,7 +30,7 @@
 
       <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
 
-      
+
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         {% if data['teachingSubject'] %}
         <div class="govuk-summary-list__row">
@@ -112,6 +112,22 @@
         </div>
         {% endif %}
 
+        {% if data['supplyTeacher'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Are you currently employed as a supply teacher?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['supplyTeacher'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/supply-teacher">
+              Change<span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
         {% if data['supplyTeacherTerm'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -143,7 +159,7 @@
           </dd>
         </div>
         {% endif %}
-        
+
         {% if data['teacherAction'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
