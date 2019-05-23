@@ -6,9 +6,12 @@ const router = express.Router()
 router.post('/supply-teacher', function (req, res) {
   let supplyTeacher = req.session.data['supplyTeacher']
 
+
   if (supplyTeacher === 'No') {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/disciplinary')
   } else {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/supply-teacher-term')
   }
 })
@@ -19,6 +22,7 @@ router.post('/supply-teacher-term', function (req, res) {
   if (supplyTeacherTerm === 'No') {
     res.redirect('/ineligible-term')
   } else {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/private-agency')
   }
 })
@@ -27,6 +31,7 @@ router.post('/private-agency', function (req, res) {
   let supplyTeacherAgency = req.session.data['supplyTeacherAgency']
 
   if (supplyTeacherAgency === 'Yes, I am employed by the school') {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/disciplinary')
   } else {
     res.redirect('/ineligible-agency')
@@ -36,9 +41,11 @@ router.post('/private-agency', function (req, res) {
 router.post('/qualified', function (req, res) {
   let qualified = req.session.data['qualified']
 
-  if (qualified === 'No') {
+if (qualified === 'No') {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/degree')
   } else {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/awarded')
   }
 })
@@ -49,6 +56,7 @@ router.post('/degree', function (req, res) {
   if (degree === 'No') {
     res.redirect('/ineligible-degree')
   } else {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/awarded')
   }
 })
@@ -59,6 +67,7 @@ router.post('/subject', function (req, res) {
   if (teachingSubject === 'No') {
     res.redirect('/ineligible-subject')
   } else {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/school')
   }
 })
@@ -69,6 +78,7 @@ router.post('/awarded', function (req, res) {
   if (awarded === 'Before 1 September 2014') {
     res.redirect('/ineligible-awarded')
   } else {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/supply-teacher')
   }
 })
@@ -83,6 +93,7 @@ router.get('/school', function (req, res) {
 })
 
 router.post('/school', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
   res.redirect('/qualified')
 })
 
@@ -90,10 +101,83 @@ router.post('/disciplinary', function (req, res) {
   let teacherAction = req.session.data['teacherAction']
 
   if (teacherAction === 'No') {
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/eligible-confirmed')
   } else {
     res.redirect('/ineligible-disciplinary')
   }
+})
+
+router.get('/check-answers', function (req, res) {
+  req.session.data.edited = true
+  res.render('check-answers')
+})
+
+router.get('/national-insurance-number', function (req, res) {
+  res.render('national-insurance-number')
+})
+
+router.post('/national-insurance-number', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/payment-method')
+})
+
+router.get('/reference-number', function (req, res) {
+  res.render('reference-number')
+})
+
+router.post('/reference-number', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/national-insurance-number')
+})
+
+router.get('/payment-method', function (req, res) {
+  res.render('payment-method')
+})
+
+router.post('/payment-method', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/contact-method')
+})
+
+router.get('/success', function (req, res) {
+  req.session.data.edited = false
+  res.render('success')
+})
+
+router.get('/start', function (req, res) {
+  req.session.data.edited = false
+  res.render('start')
+})
+
+router.get('/ineligible-agency', function (req, res) {
+  req.session.data.edited = false
+  res.render('ineligible-agency')
+})
+
+router.get('/ineligible-awarded', function (req, res) {
+  req.session.data.edited = false
+  res.render('ineligible-awarded')
+})
+
+router.get('/ineligible-degree', function (req, res) {
+  req.session.data.edited = false
+  res.render('ineligible-degree')
+})
+
+router.get('/ineligible-disciplinary', function (req, res) {
+  req.session.data.edited = false
+  res.render('ineligible-disciplinary')
+})
+
+router.get('/ineligible-subject', function (req, res) {
+  req.session.data.edited = false
+  res.render('ineligible-subject')
+})
+
+router.get('/ineligible-term', function (req, res) {
+  req.session.data.edited = false
+  res.render('ineligible-term')
 })
 
 module.exports = router
