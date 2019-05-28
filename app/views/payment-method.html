@@ -44,6 +44,18 @@
             name: "account-holder"
           }) }}
 
+                    {{ govukInput({
+                      label: {
+                        text: 'Sort code'
+                      },
+                      hint: {
+                        text: "For example: 44 00 26"
+                      },
+                      id: "sort-code",
+                      name: "sort-code",
+                      classes: "govuk-!-width-one-quarter"
+                    }) }}
+
           {{ govukInput({
             label: {
               text: "Account number"
@@ -53,21 +65,7 @@
             },
             classes: "govuk-input--width-20",
             id: "account-number",
-            name: "account-number",
-            pattern: "[0-9]{8}"
-          }) }}
-
-          {{ govukInput({
-            label: {
-              text: 'Sort code'
-            },
-            hint: {
-              text: "For example: 44 00 26"
-            },
-            id: "sort-code",
-            name: "sort-code",
-            pattern: "[0-9]{6}",
-            classes: "govuk-!-width-one-quarter"
+            name: "account-number"
           }) }}
 
         {% endcall %}
