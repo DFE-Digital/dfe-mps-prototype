@@ -18,25 +18,25 @@
       </div>
 
       <p>
-        We have sent you a confirmation 
+        We have sent you a confirmation
         {% if data['contactEmail'] %}email to {{ data['contactEmail'] }}{% endif %}{% if data['contactEmail'] and data['contactText']%} and a {% endif %}{% if data['contactText'] %}text to {{ data['contactText'] }}{% endif %}.
       </p>
 
-     
+
 
       <h2 class="govuk-heading-m">What happens next</h2>
-      
+
       <p>
         We have sent your application to the Department for Education.
       </p>
-      
+
       <p>
-        They will verify the information you have provided and then send 
+        They will verify the information you have provided and then send
         you the outcome of your application within 4 weeks.
       </p>
 
       <p>
-        You will receive 
+        You will receive
         {% if data['contactEmail'] %}email{% endif %}
         {% if data['contactEmail'] and data['contactText']%} and {% endif %}
         {% if data['contactText'] %}text {% endif %}
