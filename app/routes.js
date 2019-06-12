@@ -113,11 +113,39 @@ router.get('/check-answers', function (req, res) {
   res.render('check-answers')
 })
 
-router.get('/national-insurance-number', function (req, res) {
-  res.render('national-insurance-number')
+router.post('/national-insurance-number', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/student-loan-repayment')
 })
 
-router.post('/national-insurance-number', function (req, res) {
+router.post('/student-loan-repayment', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/student-loan-plan')
+})
+
+router.post('/student-loan-plan', function (req, res) {
+  let studentLoanPlan = req.session.data['studentLoanPlan']
+
+  if (studentLoanPlan === 'I do not know') {
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/education-country')
+  } else {
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  }
+})
+
+router.post('/education-country', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/number-of-courses')
+})
+
+router.post('/number-of-courses', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/course-start')
+})
+
+router.post('/course-start', function (req, res) {
   if (req.session.data.edited) res.redirect('/check-answers')
   res.redirect('/payment-method')
 })
