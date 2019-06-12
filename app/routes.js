@@ -141,11 +141,21 @@ router.post('/education-country', function (req, res) {
 })
 
 router.post('/number-of-courses', function (req, res) {
+  let numberOfCourses = req.session.data['numberOfCourses']
+  if (numberOfCourses === '2 or more courses') {
+    res.redirect('/multiple-courses-start')
+  }
   if (req.session.data.edited) res.redirect('/check-answers')
   res.redirect('/course-start')
 })
 
 router.post('/course-start', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/payment-method')
+})
+
+router.post('/multiple-courses-start', function (req, res) {
+  let studentLoanPlan = req.session.data['studentLoanPlan']
   if (req.session.data.edited) res.redirect('/check-answers')
   res.redirect('/payment-method')
 })
