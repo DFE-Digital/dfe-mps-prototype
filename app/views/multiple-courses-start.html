@@ -23,13 +23,13 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="course-start">
+      <form method="POST" action="multiple-courses-start">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "studentLoanPlan",
-          name: "studentLoanPlan",
+          idPrefix: "multipleCoursesStart",
+          name: "multipleCoursesStart",
           fieldset: {
             legend: {
               text: "When did the first year of each course start?",
@@ -39,19 +39,19 @@
           },
           items: [
             {
-              value: "Plan 1",
+              value: "1",
               text: "All my degree courses started before 1 September 2012",
               attributes: {
                 required: "true"
               }
             },
             {
-              value: "Plan 1 and 2",
+              value: "2",
               text: "Some of my degree courses started before 1 September 2012 and some started after 1 September 2012"
             }
             ,
             {
-              value: "Plan 2",
+              value: "3",
               text: "All of my degree courses started after 1 September 2012"
             }
           ]

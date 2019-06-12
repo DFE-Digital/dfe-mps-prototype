@@ -125,9 +125,7 @@ router.post('/student-loan-repayment', function (req, res) {
 
 router.post('/student-loan-plan', function (req, res) {
   let studentLoanPlan = req.session.data['studentLoanPlan']
-
   if (studentLoanPlan === 'I do not know') {
-    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/education-country')
   } else {
     if (req.session.data.edited) res.redirect('/check-answers')
@@ -135,17 +133,11 @@ router.post('/student-loan-plan', function (req, res) {
   }
 })
 
-router.post('/education-country', function (req, res) {
-  if (req.session.data.edited) res.redirect('/check-answers')
-  res.redirect('/number-of-courses')
-})
-
 router.post('/number-of-courses', function (req, res) {
   let numberOfCourses = req.session.data['numberOfCourses']
   if (numberOfCourses === '2 or more courses') {
     res.redirect('/multiple-courses-start')
   }
-  if (req.session.data.edited) res.redirect('/check-answers')
   res.redirect('/course-start')
 })
 
@@ -155,9 +147,30 @@ router.post('/course-start', function (req, res) {
 })
 
 router.post('/multiple-courses-start', function (req, res) {
-  let studentLoanPlan = req.session.data['studentLoanPlan']
-  if (req.session.data.edited) res.redirect('/check-answers')
-  res.redirect('/payment-method')
+  let multipleCoursesStart = req.session.data['multipleCoursesStart']
+  if (multipleCoursesStart === '1') {
+    req.session.data['studentLoanPlan'] = 'Plan 1';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  } else if (multipleCoursesStart === '2'){
+    req.session.data['studentLoanPlan'] = 'Plan 1 and 2';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  } else {
+    req.session.data['studentLoanPlan'] = 'Plan 2';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  }
+})
+
+router.post('/education-country', function (req, res) {
+  let countryLoanPlan = req.session.data['countryLoanPlan']
+  if (countryLoanPlan === 'Scotland' || countryLoanPlan === 'Northern Ireland') {
+    req.session.data['studentLoanPlan'] = 'Plan 1';
+    res.redirect('/payment-method')
+  } else {
+    res.redirect('/number-of-courses')
+  }
 })
 
 router.get('/reference-number', function (req, res) {
