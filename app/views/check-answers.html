@@ -35,7 +35,7 @@
         {% if data['teachingSubject'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Do you currently teach Mathematics and/or Physics?
+            Do you currently teach maths or physics?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['teachingSubject'] }}
@@ -51,7 +51,7 @@
         {% if data['school-name'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Which school are you currently employed to teach at?
+            Which school do you teach at?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['school-name'] }}
@@ -67,7 +67,7 @@
         {% if data['qualified'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Did you complete your Initial Teacher Training in Mathematics and/or Physics?
+            Did you complete your initial teacher training in maths or physics?"
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['qualified'] }}
@@ -83,7 +83,7 @@
         {% if data['degree'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Have you completed a UK undergraduate or postgraduate degree in Mathematics or Physics?
+            Do you have a UK undergraduate or postgraduate degree in maths or physics?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['degree'] }}
@@ -99,7 +99,7 @@
         {% if data['awarded'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            When did you complete your Initial Teacher Training?
+            When did you complete your initial teacher training?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['awarded'] }}
@@ -131,7 +131,7 @@
         {% if data['supplyTeacherTerm'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Are you employed as a supply teacher for more than one term?
+            Have you been employed as a supply teacher for more than 1 term?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['supplyTeacherTerm'] }}
@@ -147,7 +147,7 @@
         {% if data['supplyTeacherAgency'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Are you employed directly by the school or a private agency?
+            Are you employed directly by your school?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['supplyTeacherAgency'] }}
@@ -163,7 +163,7 @@
         {% if data['teacherAction'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Are you currently subject to formal capability proceedings or disciplinary action?
+            Are you currently subject to disciplinary action or formal capability proceedings?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['teacherAction'] }}
@@ -195,7 +195,7 @@
         {% if data['nin'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            What's your National Insurance number?
+            National Insurance number
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['nin'] }}
@@ -227,7 +227,7 @@
         {% if data['studentLoanPlan'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            What student loan repayment plan do you have?
+            Student loan repayment plan
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['studentLoanPlan'] }}
@@ -274,7 +274,7 @@
 
       <h2 class="govuk-heading-m">Confirm your claim</h2>
 
-      <p class="govuk-body">By submitting this claim you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+      <p class="govuk-body">By submitting this claim you are confirming that the information you have provided is correct to the best of your knowledge.</p>
 
       <form action="/success" method="post" novalidate>
 
