@@ -6,7 +6,6 @@ const router = express.Router()
 router.post('/supply-teacher', function (req, res) {
   let supplyTeacher = req.session.data['supplyTeacher']
 
-
   if (supplyTeacher === 'No') {
     if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/disciplinary')
@@ -115,7 +114,18 @@ router.get('/check-answers', function (req, res) {
 
 router.post('/national-insurance-number', function (req, res) {
   if (req.session.data.edited) res.redirect('/check-answers')
-  res.redirect('/education-country')
+  res.redirect('/repaying-loan')
+})
+
+router.post('/repaying-loan', function (req, res) {
+  let repayingLoan = req.session.data['repayingLoan']
+
+  if (repayingLoan === 'Yes') {
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/education-country')
+  } else {
+    res.redirect('/payment-method')
+  }
 })
 
 router.post('/student-loan-repayment', function (req, res) {
