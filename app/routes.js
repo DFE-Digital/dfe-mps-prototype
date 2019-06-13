@@ -115,7 +115,7 @@ router.get('/check-answers', function (req, res) {
 
 router.post('/national-insurance-number', function (req, res) {
   if (req.session.data.edited) res.redirect('/check-answers')
-  res.redirect('/student-loan-repayment')
+  res.redirect('/education-country')
 })
 
 router.post('/student-loan-repayment', function (req, res) {
