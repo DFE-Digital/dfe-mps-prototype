@@ -152,8 +152,17 @@ router.post('/number-of-courses', function (req, res) {
 })
 
 router.post('/course-start', function (req, res) {
-  if (req.session.data.edited) res.redirect('/check-answers')
-  res.redirect('/payment-method')
+  let courseStart = req.session.data['courseStart']
+
+  if (courseStart === '1') {
+    req.session.data['studentLoanPlan'] = 'Plan 1';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  } else {
+    req.session.data['studentLoanPlan'] = 'Plan 2';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  }
 })
 
 router.post('/multiple-courses-start', function (req, res) {
@@ -177,6 +186,7 @@ router.post('/education-country', function (req, res) {
   let countryLoanPlan = req.session.data['countryLoanPlan']
   if (countryLoanPlan === 'Scotland' || countryLoanPlan === 'Northern Ireland') {
     req.session.data['studentLoanPlan'] = 'Plan 1';
+    if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/payment-method')
   } else {
     res.redirect('/number-of-courses')
