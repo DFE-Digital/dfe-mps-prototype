@@ -6,7 +6,6 @@ const router = express.Router()
 router.post('/supply-teacher', function (req, res) {
   let supplyTeacher = req.session.data['supplyTeacher']
 
-
   if (supplyTeacher === 'No') {
     if (req.session.data.edited) res.redirect('/check-answers')
     res.redirect('/disciplinary')
@@ -113,13 +112,85 @@ router.get('/check-answers', function (req, res) {
   res.render('check-answers')
 })
 
-router.get('/national-insurance-number', function (req, res) {
-  res.render('national-insurance-number')
-})
-
 router.post('/national-insurance-number', function (req, res) {
   if (req.session.data.edited) res.redirect('/check-answers')
-  res.redirect('/payment-method')
+  res.redirect('/repaying-loan')
+})
+
+router.post('/repaying-loan', function (req, res) {
+  let repayingLoan = req.session.data['repayingLoan']
+
+  if (repayingLoan === 'Yes') {
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/education-country')
+  } else {
+    res.redirect('/payment-method')
+  }
+})
+
+router.post('/student-loan-repayment', function (req, res) {
+  if (req.session.data.edited) res.redirect('/check-answers')
+  res.redirect('/student-loan-plan')
+})
+
+router.post('/student-loan-plan', function (req, res) {
+  let studentLoanPlan = req.session.data['studentLoanPlan']
+  if (studentLoanPlan === 'I do not know') {
+    res.redirect('/education-country')
+  } else {
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  }
+})
+
+router.post('/number-of-courses', function (req, res) {
+  let numberOfCourses = req.session.data['numberOfCourses']
+  if (numberOfCourses === '2 or more courses') {
+    res.redirect('/multiple-courses-start')
+  }
+  res.redirect('/course-start')
+})
+
+router.post('/course-start', function (req, res) {
+  let courseStart = req.session.data['courseStart']
+
+  if (courseStart === '1') {
+    req.session.data['studentLoanPlan'] = 'Plan 1';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  } else {
+    req.session.data['studentLoanPlan'] = 'Plan 2';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  }
+})
+
+router.post('/multiple-courses-start', function (req, res) {
+  let multipleCoursesStart = req.session.data['multipleCoursesStart']
+  if (multipleCoursesStart === '1') {
+    req.session.data['studentLoanPlan'] = 'Plan 1';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  } else if (multipleCoursesStart === '2'){
+    req.session.data['studentLoanPlan'] = 'Plan 1 and 2';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  } else {
+    req.session.data['studentLoanPlan'] = 'Plan 2';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  }
+})
+
+router.post('/education-country', function (req, res) {
+  let countryLoanPlan = req.session.data['countryLoanPlan']
+  if (countryLoanPlan === 'Scotland' || countryLoanPlan === 'Northern Ireland') {
+    req.session.data['studentLoanPlan'] = 'Plan 1';
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/payment-method')
+  } else {
+    res.redirect('/number-of-courses')
+  }
 })
 
 router.get('/reference-number', function (req, res) {

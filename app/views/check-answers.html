@@ -208,6 +208,38 @@
         </div>
         {% endif %}
 
+        {% if data['repayingLoan'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you currently have a student loan?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['repayingLoan'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/repaying-loan">
+              Change<span class="govuk-visually-hidden"> if you have a student loan</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['studentLoanPlan'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What student loan repayment plan do you have?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['studentLoanPlan'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/education-country">
+              Change<span class="govuk-visually-hidden"> your student loan repayment plan</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Your account details
