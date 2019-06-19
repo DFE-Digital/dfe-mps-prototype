@@ -24,65 +24,67 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="POST" action="check-answers">
-        {% from "checkboxes/macro.njk" import govukCheckboxes %}
-        {% from "input/macro.njk" import govukInput %}
 
-        {% set emailAddress %}
-        {{ govukInput({
-          id: "contactEmail",
-          name: "contactEmail",
-          type: "email",
-          label: {
-            text: "Email address"
-          },
-          attributes: {
-            spellcheck: "false"
-          }
-        }) }}
-        {% endset -%}
+          {% from "radios/macro.njk" import govukRadios %}
+          {% from "input/macro.njk" import govukInput %}
 
-        {% set textNumber %}
-        {{ govukInput({
-          id: "contactText",
-          name: "contactText",
-          classes: "govuk-!-width-one-third",
-          type: "tel",
-          label: {
-            text: "Mobile phone number"
-          }
-        }) }}
-        {% endset -%}
-
-        {{ govukCheckboxes({
-          idPrefix: "contactMethod",
-          name: "contactMethod",
-          fieldset: {
-            legend: {
-              text: "How do you want us to contact you?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
+          {% set emailAddress %}
+          {{ govukInput({
+            id: "contactEmail",
+            name: "contactEmail",
+            type: "email",
+            classes: "govuk-width-one-half",
+            label: {
+              text: "Email address"
+            },
+            attributes: {
+              spellcheck: "false"
             }
-          },
-          hint: {
-            text: "We'll only use these details to update you about your claim."
-          },
-          items: [
-            {
-              value: "email",
-              text: "Email",
-              conditional: {
-                html: emailAddress
+          }) }}
+          {% endset -%}
+
+          {% set textNumber %}
+          {{ govukInput({
+            id: "contactText",
+            name: "contactText",
+            type: "tel",
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Mobile phone number"
+            }
+          }) }}
+          {% endset -%}
+
+          {{ govukRadios({
+            idPrefix: "how-contacted-conditional",
+            name: "how-contacted",
+            fieldset: {
+              legend: {
+                text: "How do you want us to contact you?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
               }
             },
-            {
-              value: "text message",
-              text: "Text message",
-              conditional: {
-                html: textNumber
+            hint: {
+              text: "We'll only use these details to update you about your claim."
+            },
+            items: [
+              {
+                value: "email",
+                text: "Email",
+                conditional: {
+                  html: emailAddress
+                }
+              },
+              {
+                value: "text",
+                text: "Text message",
+                conditional: {
+                  html: textNumber
+                }
               }
-            }
-          ]
-        }) }}
+            ]
+          }) }}
 
         {% from "button/macro.njk" import govukButton %}
 
