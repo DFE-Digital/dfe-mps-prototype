@@ -122,7 +122,7 @@ router.post('/repaying-loan', function (req, res) {
 
   if (repayingLoan === 'Yes') {
     if (req.session.data.edited) res.redirect('/check-answers')
-    res.redirect('/education-country')
+    res.redirect('student-loan-repayment')
   } else {
     res.redirect('/payment-method')
   }
@@ -130,7 +130,7 @@ router.post('/repaying-loan', function (req, res) {
 
 router.post('/student-loan-repayment', function (req, res) {
   if (req.session.data.edited) res.redirect('/check-answers')
-  res.redirect('/student-loan-plan')
+  res.redirect('/education-country')
 })
 
 router.post('/student-loan-plan', function (req, res) {

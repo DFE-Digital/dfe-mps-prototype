@@ -224,6 +224,22 @@
         </div>
         {% endif %}
 
+        {% if data['studentLoanRepayment'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How much student loan did you repay while you were at SCHOOL between 6 April XXXX and 5 April XXXX?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['studentLoanRepayment'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/repaying-loan">
+              Change<span class="govuk-visually-hidden"> student loan repayment amounnt</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
         {% if data['studentLoanPlan'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
