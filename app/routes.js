@@ -101,9 +101,20 @@ router.post('/disciplinary', function (req, res) {
 
   if (teacherAction === 'No') {
     if (req.session.data.edited) res.redirect('/check-answers')
-    res.redirect('/eligible-confirmed')
+    res.redirect('/capability')
   } else {
     res.redirect('/ineligible-disciplinary')
+  }
+})
+
+router.post('/capability', function (req, res) {
+  let capabilitiyAction = req.session.data['capabilitiyAction']
+
+  if (capabilitiyAction === 'No') {
+    if (req.session.data.edited) res.redirect('/check-answers')
+    res.redirect('/eligible-confirmed')
+  } else {
+    res.redirect('/ineligible-capability')
   }
 })
 
