@@ -23,8 +23,9 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        Which school do you teach at?
+      <h1 class="govuk-label-wrapper" id="schoolQuestion"><label class="govuk-label govuk-label--xl" for="schoolQuestion">
+          Which school do you teach at?
+        </label>
       </h1>
       <form method="POST" action="school">
         {% from "input/macro.njk" import govukInput %}
