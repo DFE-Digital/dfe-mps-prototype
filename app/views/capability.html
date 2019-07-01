@@ -23,22 +23,22 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="disciplinary">
+      <form method="POST" action="capability">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "teacherAction",
-          name: "teacherAction",
+          idPrefix: "capabilitiyAction",
+          name: "capabilitiyAction",
           fieldset: {
             legend: {
-              text: "Are you currently subject to disciplinary action?",
+              text: "Are you currently subject to formal action for poor performance at work?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           hint: {
-            text: "For example, if you are under an investigation or have been given a warning that has not expired yet. We only use this information to check your eligibility."
+            text: "For example, under your school’s capability or performance management policy. We only use this information to check your eligibility."
           },
           items: [
             {

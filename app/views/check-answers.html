@@ -163,10 +163,26 @@
         {% if data['teacherAction'] %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Are you currently subject to disciplinary action or formal capability proceedings?
+              Are you currently subject to disciplinary action?
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['teacherAction'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/disciplinary">
+              Change<span class="govuk-visually-hidden"> your answer</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['capabilitiyAction'] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+              Are you currently subject to formal action for poor performance at work?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['capabilitiyAction'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="/disciplinary">
