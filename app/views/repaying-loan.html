@@ -1,19 +1,18 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  DfE Maths and Physics Service Prototype
+DfE Maths and Physics Service Prototype
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
+{{ govukPhaseBanner({
     tag: {
       text: "beta"
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 
-  {{ govukBackLink({
+{{ govukBackLink({
     text: "Back",
     href: "/national-insurance-number"
   }) }}
@@ -21,24 +20,24 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="repaying-loan">
-        {% from "radios/macro.njk" import govukRadios %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="POST" action="repaying-loan">
+      {% from "radios/macro.njk" import govukRadios %}
 
-        {{ govukRadios({
+      {{ govukRadios({
           classes: "govuk-radios",
           idPrefix: "repayingLoan",
           name: "repayingLoan",
           fieldset: {
             legend: {
-              text: "Do you currently have a student loan?",
+              text: "Have ever taken out a student loan and not paid it off yet?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           hint: {
-            text: "We need this information to ensure we pay you the correct amount after tax."
+            text: "We need this information to make sure you do not pay any tax."
           },
           items: [
             {
@@ -52,14 +51,14 @@
           ]
         }) }}
 
-        {% from "button/macro.njk" import govukButton %}
+      {% from "button/macro.njk" import govukButton %}
 
-        {{ govukButton({
+      {{ govukButton({
           text: "Continue",
           preventDoubleClick: true
         }) }}
-      </form>
-    </div>
+    </form>
   </div>
+</div>
 
 {% endblock %}
