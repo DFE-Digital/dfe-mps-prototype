@@ -1,0 +1,112 @@
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% block beforeContent %} {{ govukPhaseBanner({ tag: {
+text: "beta" }, html: 'This is a new service – your
+<a class="govuk-link" href="#">feedback</a> will help us to improve it.' }) }}
+
+{{
+  govukBackLink({
+    text: "Back",
+    href: "/disciplinary"
+  })
+}}
+{% endblock %} {% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--xl">
+        We have verified your identity
+      </label>
+    </h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">
+      This is your first name, surname, address, date of birth, and gender from
+      your digital identity:
+    </p>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          First name
+        </dt>
+
+        <dd class="govuk-summary-list__value">
+          Fred
+        </dd>
+
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
+
+        <dd class="govuk-summary-list__value">
+          Smith
+        </dd>
+
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address
+        </dt>
+
+        <dd class="govuk-summary-list__value">
+          Aviation House<br />London<br />WC2B 6NH
+        </dd>
+
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+
+        <dd class="govuk-summary-list__value">
+          1 January 1970
+        </dd>
+
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Gender
+        </dt>
+
+        <dd class="govuk-summary-list__value">
+          Male
+        </dd>
+
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+    </dl>
+
+    <a href="reference-number" role="button" class="govuk-button">
+      Continue
+    </a>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Some of this information is wrong
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        If you find that some of this information is incorrect please contact
+        support at
+        <a
+          class="govuk-link"
+          href="mailto:studentloanteacherpayment@digital.education.gov.uk"
+          >studentloanteacherpayment@digital.education.gov.uk</a
+        >
+        as this could affect your application.
+      </div>
+    </details>
+  </div>
+</div>
+{% endblock %}

@@ -1,22 +1,24 @@
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% block content %}
 
-{% extends "layout.html" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      You’re not eligible for this payment.
+    </h1>
 
-{% block pageTitle %}
-  DfE Maths and Physics Service Prototype
-{% endblock %}
+    <p class="govuk-body">
+      You can only get this payment if you are employed directly by the school.
+    </p>
 
-{% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-          You’re not eligible for this payment.
-      </h1>
-
-      <p class="govuk-body">
-          You can only get this payment if you are employed directly by the school.
-      </p>
-    </div>
+    <p class="govuk-body">
+      You can find more information on the
+      <a
+        href="https://www.gov.uk/guidance/apply-for-mathematics-and-physics-teacher-retention-payments#employment-eligibility-criteria"
+        >guidance for this service</a
+      >.
+    </p>
   </div>
+</div>
 
 {% endblock %}

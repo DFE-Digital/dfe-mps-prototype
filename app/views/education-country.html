@@ -1,38 +1,30 @@
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% block beforeContent %} {{ govukPhaseBanner({ tag: {
+text: "beta" }, html: 'This is a new service – your
+<a class="govuk-link" href="#">feedback</a> will help us to improve it.' }) }}
 
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  DfE Maths and Physics Service Prototype
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {{ govukBackLink({
+{{
+  govukBackLink({
     text: "Back",
     href: "/repaying-loan"
-  }) }}
-{% endblock %}
+  })
+}}
+{% endblock %} {% block content %}
 
-{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="POST" action="education-country">
+      {% from "radios/macro.njk" import govukRadios %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="education-country">
-        {% from "radios/macro.njk" import govukRadios %}
-
-        {{ govukRadios({
+      {{
+        govukRadios({
           classes: "govuk-radios",
           idPrefix: "countryLoanPlan",
           name: "countryLoanPlan",
           fieldset: {
             legend: {
-              text: "When you first applied for your student loan in which country was your home address?",
+              text:
+                "When you applied for your student loan where was your home address?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -46,28 +38,31 @@
               }
             },
             {
-              value: "Wales",
-              text: "Wales"
-            },
-            {
               value: "Northern Ireland",
               text: "Northern Ireland"
             },
             {
               value: "Scotland",
               text: "Scotland"
+            },
+            {
+              value: "Wales",
+              text: "Wales"
             }
           ]
-        }) }}
+        })
+      }}
 
-        {% from "button/macro.njk" import govukButton %}
+      {% from "button/macro.njk" import govukButton %}
 
-        {{ govukButton({
+      {{
+        govukButton({
           text: "Continue",
           preventDoubleClick: true
-        }) }}
-      </form>
-    </div>
+        })
+      }}
+    </form>
   </div>
+</div>
 
 {% endblock %}
