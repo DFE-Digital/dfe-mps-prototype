@@ -1,65 +1,56 @@
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% block beforeContent %} {{ govukPhaseBanner({ tag: {
+text: "beta" }, html: 'This is a new service – your
+<a class="govuk-link" href="#">feedback</a> will help us to improve it.' }) }}
 
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  DfE Maths and Physics Service Prototype
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {{ govukBackLink({
+{{
+  govukBackLink({
     text: "Back",
     href: "/subject"
-  }) }}
-{% endblock %}
+  })
+}}
+{% endblock %} {% block content %}
 
-{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--xl">
+        Which school do you teach at?
+      </label>
+    </h1>
+    <form method="POST" action="school">
+      {% from "input/macro.njk" import govukInput %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-label-wrapper">
-        <label class="govuk-label govuk-label--xl">
-          Which school do you teach at?
-        </label>
-      </h1>
-      <form method="POST" action="school">
-        {% from "input/macro.njk" import govukInput %}
+      <span class="govuk-hint">
+        Enter the school name. Use at least four characters.
+      </span>
+      <div class="govuk-form-group" id="schoolNameContainer"></div>
 
-        <label class="govuk-label" for="schoolName">Enter the school name</label>
-        <span class="govuk-hint">
-          Type in 4 or more characters for results.
-        </span>
-        <div class="govuk-form-group" id="schoolNameContainer"></div>
+      {% from "button/macro.njk" import govukButton %}
 
-        {% from "button/macro.njk" import govukButton %}
-
-        {{ govukButton({
+      {{
+        govukButton({
           text: "Continue",
           preventDoubleClick: true
-        }) }}
-      </form>
-    </div>
+        })
+      }}
+    </form>
   </div>
+</div>
 
 {% set schoolNames = schoolList %}
 <script>
-window.onload = function () {
-  schoolNames = "{{ schoolList | safe }}".split(',')
-  accessibleAutocomplete({
-    element: document.querySelector('#schoolNameContainer'),
-    id: 'schoolName',
-    source: schoolNames,
-    minLength: 4,
-    displayMenu: 'overlay',
-    name: 'school-name'
-  })
-}
+  window.onload = function() {
+    schoolNames = "{{ schoolList | safe }}".split(",");
+    accessibleAutocomplete({
+      element: document.querySelector("#schoolNameContainer"),
+      id: "schoolName",
+      source: schoolNames,
+      minLength: 4,
+      displayMenu: "overlay",
+      name: "school-name"
+    });
+  };
 </script>
 
 {% endblock %}

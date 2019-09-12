@@ -1,307 +1,386 @@
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% from "back-link/macro.njk" import govukBackLink %}
+{% from "summary-list/macro.njk" import govukSummaryList %} {% from
+"button/macro.njk" import govukButton %} {% from "phase-banner/macro.njk" import
+govukPhaseBanner %} {% block beforeContent %} {{ govukPhaseBanner({ tag: { text:
+"beta" }, html: 'This is a new service – your
+<a class="govuk-link" href="#">feedback</a> will help us to improve it.' }) }}
 
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  DfE Maths and Physics Service Prototype
-{% endblock %}
-
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "summary-list/macro.njk" import govukSummaryList %}
-{% from "button/macro.njk" import govukButton %}
-{% from "phase-banner/macro.njk" import govukPhaseBanner %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {{ govukBackLink({
+{{
+  govukBackLink({
     text: "Back",
     href: "/contact-method"
-  }) }}
-{% endblock %}
+  })
+}}
+{% endblock %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-xl">
+      Check your answers before sending your application
+    </h1>
+    <h2 class="govuk-heading-m">
+      Eligibility details
+    </h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      {% if data['teachingSubject'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you currently teach maths or physics?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["teachingSubject"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/subject">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['school-name'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Which school do you teach at?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["school-name"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/school">
+            Change<span class="govuk-visually-hidden"> your school</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['qualified'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Did you complete your initial teacher training in maths or physics?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["qualified"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/qualified">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['degree'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you have a UK undergraduate or postgraduate degree in maths or
+          physics?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["degree"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/degree">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['awarded'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          When did you complete your initial teacher training?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["awarded"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/awarded">
+            Change<span class="govuk-visually-hidden">
+              when you completed your Initial Teacher Training</span
+            >
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['supplyTeacher'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Are you currently employed as a supply teacher?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["supplyTeacher"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/supply-teacher">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['supplyTeacherTerm'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Have you been employed as a supply teacher for more than 1 term?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["supplyTeacherTerm"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/supply-teacher-term">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['supplyTeacherAgency'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Are you employed directly by your school?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["supplyTeacherAgency"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/private-agency">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['teacherAction'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Are you currently subject to disciplinary action?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["teacherAction"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/disciplinary">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['capabilitiyAction'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Are you currently subject to formal action for poor performance at
+          work?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["capabilitiyAction"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/disciplinary">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+    <h2 class="govuk-heading-m">
+      GOV.UK Verify details
+    </h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          First name
+        </dt>
 
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+        <dd class="govuk-summary-list__value">
+          Fred
+        </dd>
 
-      <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
 
+        <dd class="govuk-summary-list__value">
+          Smith
+        </dd>
 
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        {% if data['teachingSubject'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Do you currently teach maths or physics?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['teachingSubject'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/subject">
-              Change<span class="govuk-visually-hidden"> your answer</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address
+        </dt>
 
-        {% if data['school-name'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Which school do you teach at?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['school-name'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/school">
-              Change<span class="govuk-visually-hidden"> your school</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+        <dd class="govuk-summary-list__value">
+          Aviation House<br />London<br />WC2B 6NH
+        </dd>
 
-        {% if data['qualified'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Did you complete your initial teacher training in maths or physics?"
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['qualified'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/qualified">
-              Change<span class="govuk-visually-hidden"> your answer</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
 
-        {% if data['degree'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Do you have a UK undergraduate or postgraduate degree in maths or physics?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['degree'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/degree">
-              Change<span class="govuk-visually-hidden"> your answer</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+        <dd class="govuk-summary-list__value">
+          1 January 1970
+        </dd>
 
-        {% if data['awarded'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            When did you complete your initial teacher training?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['awarded'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/awarded">
-              Change<span class="govuk-visually-hidden"> when you completed your Initial Teacher Training</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Gender
+        </dt>
 
-        {% if data['supplyTeacher'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Are you currently employed as a supply teacher?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['supplyTeacher'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/supply-teacher">
-              Change<span class="govuk-visually-hidden"> your answer</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+        <dd class="govuk-summary-list__value">
+          Male
+        </dd>
 
-        {% if data['supplyTeacherTerm'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Have you been employed as a supply teacher for more than 1 term?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['supplyTeacherTerm'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/supply-teacher-term">
-              Change<span class="govuk-visually-hidden"> your answer</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+        <dd class="govuk-summary-list__actions"></dd>
+      </div>
+    </dl>
 
-        {% if data['supplyTeacherAgency'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Are you employed directly by your school?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['supplyTeacherAgency'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/private-agency">
-              Change<span class="govuk-visually-hidden"> your answer</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+    <h2 class="govuk-heading-m">
+      Identity details
+    </h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      {% if data['trn'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          What's your teacher reference number?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["trn"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/reference-number">
+            Change<span class="govuk-visually-hidden">
+              your teacher reference number</span
+            >
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['nin'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          National Insurance number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["nin"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/national-insurance-number">
+            Change<span class="govuk-visually-hidden">
+              your national insurance number</span
+            >
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact details
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['contactEmail'] %}
+          <p class="govuk-body">{{ data["contactEmail"] }}</p>
+          {% endif %} {% if data['contactText'] %}
+          <p class="govuk-body">{{ data["contactText"] }}</p>
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/contact-method">
+            Change<span class="govuk-visually-hidden">
+              your contact details</span
+            >
+          </a>
+        </dd>
+      </div>
+    </dl>
 
-        {% if data['teacherAction'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-              Are you currently subject to disciplinary action?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['teacherAction'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/disciplinary">
-              Change<span class="govuk-visually-hidden"> your answer</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+    <h2 class="govuk-heading-m">
+      Student Loan Details
+    </h2>
 
-        {% if data['capabilitiyAction'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-              Are you currently subject to formal action for poor performance at work?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['capabilitiyAction'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/disciplinary">
-              Change<span class="govuk-visually-hidden"> your answer</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      {% if data['repayingLoan'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you currently have a student loan?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["repayingLoan"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/repaying-loan">
+            Change<span class="govuk-visually-hidden">
+              if you have a student loan</span
+            >
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['studentLoanPlan'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Student loan repayment plan
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["studentLoanPlan"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/education-country">
+            Change<span class="govuk-visually-hidden">
+              your student loan repayment plan</span
+            >
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
 
-        {% if data['trn'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            What's your teacher reference number?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['trn'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/reference-number">
-              Change<span class="govuk-visually-hidden"> your teacher reference number</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+    <h2 class="govuk-heading-m">
+      Payment Details
+    </h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Bank sort code:
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data["sort-code"] }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/payment-method">
+            Change<span class="govuk-visually-hidden">
+              your bank sort code</span
+            >
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Bank account number:
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">
+            {{ data["account-number"] }}
+          </p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/payment-method">
+            Change<span class="govuk-visually-hidden">
+              your bank account number</span
+            >
+          </a>
+        </dd>
+      </div>
+    </dl>
 
-        {% if data['nin'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            National Insurance number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['nin'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/national-insurance-number">
-              Change<span class="govuk-visually-hidden"> your national insurance number</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+    <h2 class="govuk-heading-m">Confirm your claim</h2>
 
-        {% if data['repayingLoan'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Do you currently have a student loan?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['repayingLoan'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/repaying-loan">
-              Change<span class="govuk-visually-hidden"> if you have a student loan</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+    <p class="govuk-body">
+      By submitting this notification you are confirming that, to the best of
+      your knowledge, the details you are providing are correct.
+    </p>
 
-        {% if data['studentLoanPlan'] %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Student loan repayment plan
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['studentLoanPlan'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/education-country">
-              Change<span class="govuk-visually-hidden"> your student loan repayment plan</span>
-            </a>
-          </dd>
-        </div>
-        {% endif %}
+    <form action="/success" method="post" novalidate>
+      <input type="hidden" name="answers-checked" value="true" />
 
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Your account details
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <p class="govuk-body">{{ data['account-holder'] }}</p>
-            <p class="govuk-body">Sort code:<br>{{ data['sort-code'] }}</p>
-            <p class="govuk-body">Account number:<br>{{ data['account-number'] }}</p>
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/payment-method">
-              Change<span class="govuk-visually-hidden"> your account details</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Contact details
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['contactEmail'] %}<p class="govuk-body">{{ data['contactEmail'] }}</p>{% endif %}
-            {% if data['contactText'] %}<p class="govuk-body">{{ data['contactText'] }}</p>{% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/contact-method">
-              Change<span class="govuk-visually-hidden"> your contact details</span>
-            </a>
-          </dd>
-        </div>
-      </dl>
-
-      <h2 class="govuk-heading-m">Confirm your claim</h2>
-
-      <p class="govuk-body">By submitting this claim you are confirming that the information you have provided is correct to the best of your knowledge.</p>
-
-      <form action="/success" method="post" novalidate>
-
-        <input type="hidden" name="answers-checked" value="true">
-
-        {{ govukButton({
+      {{
+        govukButton({
           text: "Confirm and send"
-        }) }}
-
-      </form>
-
-    </div>
+        })
+      }}
+    </form>
   </div>
+</div>
 {% endblock %}

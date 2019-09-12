@@ -1,24 +1,30 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% block content %}
 
-{% block pageTitle %}
-DfE Maths and Physics Service Prototype
-{% endblock %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      You’re not eligible for this payment
+    </h1>
 
-{% block content %}
+    <p class="govuk-body">
+      You can only get this payment if you’re not currently subject to formal
+      capability action.
+    </p>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        You’re not eligible for this payment
-      </h1>
+    <p class="govuk-inset-text">
+      If the action has ended and any warnings have expired by 31 January 2020
+      you can apply again.
+    </p>
 
-      <p class="govuk-body">
-          You can only get this payment if you’re not currently subject to formal capability action.
-      </p>
-      <p class="govuk-body">
-          If the action has ended and any warnings have expired by 31 January 2020 you can apply again.
-      </p>
-    </div>
+    <p class="govuk-body">
+      You can find more information on the
+      <a
+        href="https://www.gov.uk/guidance/apply-for-mathematics-and-physics-teacher-retention-payments#performance-eligibility-criteria"
+        >guidance for this service</a
+      >.
+    </p>
   </div>
+</div>
 
 {% endblock %}

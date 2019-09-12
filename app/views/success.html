@@ -1,53 +1,54 @@
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% block content %}
 
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  DfE Maths and Physics Service Prototype
-{% endblock %}
-
-{% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">Application complete</h1>
-        <div class="govuk-panel__body">
-          Your reference number<br><strong>HDJ2123F</strong>
-        </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">Claim submitted</h1>
+      <div class="govuk-panel__body">
+        Your reference number<br /><strong>HDJ2123F</strong>
       </div>
-
-      <p>
-        We have sent you a confirmation
-        {% if data['contactEmail'] %}email to {{ data['contactEmail'] }}{% endif %}{% if data['contactEmail'] and data['contactText']%} and a {% endif %}{% if data['contactText'] %}text to {{ data['contactText'] }}{% endif %}.
-      </p>
-
-
-
-      <h2 class="govuk-heading-m">What happens next</h2>
-
-      <p>
-        We have sent your application to the Department for Education.
-      </p>
-
-      <p>
-          They will check the information you’ve provided and tell you if your claim was successful within 4 weeks.
-      </p>
-
-      <p>
-          They will send you updates as your application progresses.
-      </p>
-
-      <div class="govuk-inset-text">
-          It can take up to 8 weeks to process your application and make the payment into your account.
-      </div>
-
-      <p>
-        <a href="http://www.google.com"  class="govuk-link">
-          What do you think of this service?
-        </a> (takes 30 seconds)
-      </p>
     </div>
+
+    <p class="govuk-body">
+      We have sent you a confirmation {% if data['contactEmail'] %}email to
+      {{ data["contactEmail"] }}{% endif %}{% if data['contactEmail'] and
+      data['contactText']%} and a {% endif %}{% if data['contactText'] %}text to
+      {{ data["contactText"] }}{% endif %}.
+    </p>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p class="govuk-body">
+      We have sent your application to the Department for Education.
+    </p>
+
+    <p class="govuk-body">
+      They will verify the information that you have provided and then send you
+      the outcome of your application in the next 6 weeks.
+    </p>
+
+    <p class="govuk-body">
+      This service is currently in development, so while we expect to be able to
+      send you the outcome in that time frame, it may change.
+    </p>
+
+    <p class="govuk-body">
+      You will receive email updates as your application progresses.
+    </p>
+
+    <div class="govuk-inset-text">
+      It can take up to 18 weeks to process your application and make the
+      payment into your account.
+    </div>
+
+    <p>
+      <a href="http://www.google.com" class="govuk-link">
+        What do you think of this service?
+      </a>
+      (takes 30 seconds)
+    </p>
   </div>
+</div>
 
 {% endblock %}

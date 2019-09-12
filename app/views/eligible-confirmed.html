@@ -1,55 +1,36 @@
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% block beforeContent %} {{ govukPhaseBanner({ tag: {
+text: "beta" }, html: 'This is a new service – your
+<a class="govuk-link" href="#">feedback</a> will help us to improve it.' }) }}
 
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  DfE Maths and Physics Service Prototype
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {{ govukBackLink({
+{{
+  govukBackLink({
     text: "Back",
     href: "/disciplinary"
-  }) }}
-{% endblock %}
+  })
+}}
+{% endblock %} {% block content %}
 
-{% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-label-wrapper">
-        <label class="govuk-label govuk-label--xl">
-          You're eligible to receive &pound;2,000
-        </label>
-      </h1>
-    </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--xl">
+        You're eligible to receive &pound;2,000
+      </label>
+    </h1>
   </div>
+</div>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">
+      Based on your answers you can claim a &pound;2,000 payment for teaching
+      maths or physics.
+    </p>
 
-      <p class="govuk-body">
-          So we can pay you, we need to check your identity using GOV.UK Verify – our secure way to prove who you are online.
-      </p>
-
-      <p class="govuk-body">
-          If you do not have an account already, you’ll have to sign up for one. This usually takes around 15 minutes. You'll need a passport or photocard driving licence and a debit or credit card.
-      </p>
-
-      <a href="https://govuk-verify.herokuapp.com/intro?requestId=claim-retention-payments"
-      role="button" draggable="false" class="govuk-button">
-        Use GOV.UK Verify
-      </a>
-
-      <a href="/reference-number" role="button" class="govuk-button govuk-button--secondary">
-          Skip Verify
-      </a>
-    </div>
+    <a href="/information-provided" role="button" class="govuk-button">
+      Continue
+    </a>
   </div>
+</div>
 {% endblock %}
