@@ -331,24 +331,40 @@ govukPhaseBanner %} {% block beforeContent %} {{ govukPhaseBanner({ tag: { text:
       Payment details
     </h2>
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      {% if data['name-on-the-account'] %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Bank sort code:
+          Name on the account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">
+            {{ data["name-on-the-account"] }}
+          </p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/payment-method">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %} {% if data['sort-code'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sort code
         </dt>
         <dd class="govuk-summary-list__value">
           <p class="govuk-body">{{ data["sort-code"] }}</p>
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="/payment-method">
-            Change<span class="govuk-visually-hidden">
-              your bank sort code</span
-            >
+            Change<span class="govuk-visually-hidden"> your answer</span>
           </a>
         </dd>
       </div>
+      {% endif %} {% if data['account-number'] %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Bank account number:
+          Account Number
         </dt>
         <dd class="govuk-summary-list__value">
           <p class="govuk-body">
@@ -357,12 +373,25 @@ govukPhaseBanner %} {% block beforeContent %} {{ govukPhaseBanner({ tag: { text:
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="/payment-method">
-            Change<span class="govuk-visually-hidden">
-              your bank account number</span
-            >
+            Change<span class="govuk-visually-hidden"> your answer</span>
           </a>
         </dd>
       </div>
+      {% endif %} {% if data['roll-number'] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Building society roll number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">Sort code:<br />{{ data["roll-number"] }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/payment-method">
+            Change<span class="govuk-visually-hidden"> your answer</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
     </dl>
 
     <h2 class="govuk-heading-m">Confirm your claim</h2>

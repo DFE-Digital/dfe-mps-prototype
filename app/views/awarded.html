@@ -1,32 +1,23 @@
+{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %} {% block beforeContent %} {{ govukPhaseBanner({ tag: {
+text: "beta" }, html: 'This is a new service – your
+<a class="govuk-link" href="#">feedback</a> will help us to improve it.' }) }}
 
-{% extends "layout.html" %}
-
-{% block pageTitle %}
-  DfE Maths and Physics Service Prototype
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {{ govukBackLink({
+{{
+  govukBackLink({
     text: "Back",
     href: "/qualified"
-  }) }}
-{% endblock %}
+  })
+}}
+{% endblock %} {% block content %}
 
-{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="POST" action="awarded">
+      {% from "radios/macro.njk" import govukRadios %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="awarded">
-        {% from "radios/macro.njk" import govukRadios %}
-
-        {{ govukRadios({
+      {{
+        govukRadios({
           classes: "govuk-radios",
           idPrefix: "awarded",
           name: "awarded",
@@ -39,27 +30,30 @@
           },
           items: [
             {
-              value: "On or after 1 September 2014",
-              text: "On or after 1 September 2014",
+              value: "Before 1 September 2013",
+              text: "Before 1 September 2013"
+            },
+            {
+              value: "On or after 1 September 2013",
+              text: "On or after 1 September 2013",
               attributes: {
                 required: "true"
               }
-            },
-            {
-              value: "Before 1 September 2014",
-              text: "Before 1 September 2014"
             }
           ]
-        }) }}
+        })
+      }}
 
-        {% from "button/macro.njk" import govukButton %}
+      {% from "button/macro.njk" import govukButton %}
 
-        {{ govukButton({
+      {{
+        govukButton({
           text: "Continue",
           preventDoubleClick: true
-        }) }}
-      </form>
-    </div>
+        })
+      }}
+    </form>
   </div>
+</div>
 
 {% endblock %}
