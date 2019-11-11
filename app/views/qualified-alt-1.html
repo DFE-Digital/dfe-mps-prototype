@@ -22,26 +22,24 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="degree">
+      <form method="POST" action="qualified">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "degree",
-          name: "degree",
+          idPrefix: "qualified",
+          name: "qualified",
           fieldset: {
             legend: {
-              text: "Do you have a UK undergraduate or postgraduate degree in maths or physics?",
+              text: "Did your initial teacher training specialise in maths or physics?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
-           hint: {
-              html: "You must have specialised in maths or physics to be eligible to claim. If you studied maths or
-              physics for less than 50% of your degree, please select No. <br /><br />
-              For more information on which subjects are eligible, see the
-              <a href='https://www.gov.uk/guidance/apply-for-mathematics-and-physics-teacher-retention-payments#opportinity-area' class='govuk-link'>qualifications criteria for this service.</a>"
-            },
+          hint: {
+            text:" Please select no f you trained to teach physics as part of science but specialised in a subject
+            other than physics."
+          },
           items: [
             {
               value: "Yes",
@@ -50,13 +48,6 @@
             {
               value: "No",
               text: "No"
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "I have a non-UK degree in Maths or Physics",
-              text: "I have a non-UK degree in Maths or Physics"
             }
           ]
         }) }}
@@ -67,6 +58,11 @@
           text: "Continue",
           preventDoubleClick: true
         }) }}
+
+        <a href="qualified-alt-1" class="govuk-button govuk-button--secondary">
+          Alternate Version 1
+        </a>
+
       </form>
     </div>
   </div>
