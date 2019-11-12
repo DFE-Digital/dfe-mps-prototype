@@ -14,7 +14,7 @@
 
   {{ govukBackLink({
     text: "Back",
-    href: "/qualified"
+    href: "/supply-teacher"
   }) }}
 {% endblock %}
 
@@ -22,41 +22,34 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="POST" action="degree">
+      <form method="POST" action="supply-teacher-term">
         {% from "radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "degree",
-          name: "degree",
+          idPrefix: "supplyTeacherTerm",
+          name: "supplyTeacherTerm",
           fieldset: {
             legend: {
-              text: "Do you have a UK undergraduate or postgraduate degree in maths or physics?",
+              text: "Are you contracted by a school to teach for an entire term or longer?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
-           hint: {
-              html: "You must have specialised in maths or physics to be eligible to claim. If you studied maths or
-              physics for less than 50% of your degree, please select No. <br /><br />
-              For more information on which subjects are eligible, see the
-              <a href='https://www.gov.uk/guidance/apply-for-mathematics-and-physics-teacher-retention-payments#opportinity-area' class='govuk-link'>qualifications criteria for this service.</a>"
-            },
+          hint: {
+            text: "This does not include contracts with private agencies."
+          },
           items: [
             {
               value: "Yes",
-              text: "Yes"
+              text: "Yes",
+              attributes: {
+                required: "true"
+              }
             },
             {
               value: "No",
               text: "No"
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "I have a non-UK degree in Maths or Physics",
-              text: "I have a non-UK degree in Maths or Physics"
             }
           ]
         }) }}

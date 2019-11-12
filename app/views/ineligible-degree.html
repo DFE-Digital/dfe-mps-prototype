@@ -1,25 +1,32 @@
-{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
-Prototype {% endblock %} {% block content %}
+{% extends "layout.html" %}
+{% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %}
+{% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      You’re not eligible for this payment.
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+      You’re not eligible for this payment
     </h1>
 
-    <p class="govuk-body">
-      You can only get this payment if you have completed a degree in maths or
-      physics or have completed initial teacher training in maths or physics.
+      <p class="govuk-body">
+      You can only get this payment if you completed a degree specialising in maths or physics or you specialised in
+      maths or physics for your initial teacher training.
     </p>
 
-    <p class="govuk-body">
-      You can find more information on the
+      <p class="govuk-body">
+      If you trained to teach physics as part of science but specialised in a subject other than physics, you are not
+      eligible to claim.
+    </p>
+
+      <p class="govuk-body">
+      You can find more information in the
       <a
         href="https://www.gov.uk/guidance/apply-for-mathematics-and-physics-teacher-retention-payments#opportinity-area"
         >guidance for this service</a
       >.
     </p>
+    </div>
   </div>
-</div>
 
 {% endblock %}

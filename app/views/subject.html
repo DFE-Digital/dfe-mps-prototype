@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
@@ -15,7 +14,7 @@
 
   {{ govukBackLink({
     text: "Back",
-    href: "/consent"
+    href: "/start"
   }) }}
 {% endblock %}
 
@@ -32,10 +31,14 @@
           name: "teachingSubject",
           fieldset: {
             legend: {
-              text: "Do you currently teach any maths or physics?",
+              text: "Do you currently teach any amount of maths or physics?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
+          },
+          hint: {
+            text: "You are still eligible to claim if you usually teach another subject but sometimes teach maths or
+            physics."
           },
           items: [
             {
@@ -58,6 +61,14 @@
           text: "Continue",
           preventDoubleClick: true
         }) }}
+
+        <a href="subject-alt-1" class="govuk-button govuk-button--secondary">
+          Alternate Version 1
+        </a>
+
+        <a href="subject-alt-2" class="govuk-button govuk-button--secondary">
+          Alternate Version 2
+        </a>
       </form>
     </div>
   </div>

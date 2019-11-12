@@ -1,56 +1,60 @@
-{% extends "layout.html" %} {% block pageTitle %} DfE Maths and Physics Service
-Prototype {% endblock %} {% block beforeContent %} {{ govukPhaseBanner({ tag: {
+{% extends "layout.html" %}
+{% block pageTitle %} DfE Maths and Physics Service
+Prototype {% endblock %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({ tag: {
 text: "beta" }, html: 'This is a new service – your
 <a class="govuk-link" href="#">feedback</a> will help us to improve it.' }) }}
 
-{{
+  {{
   govukBackLink({
     text: "Back",
     href: "/subject"
   })
 }}
-{% endblock %} {% block content %}
+{% endblock %}
+{% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-label-wrapper">
-      <label class="govuk-label govuk-label--xl">
-        Which school do you teach at?
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--xl">
+        Which school are you employed to teach at?
       </label>
-    </h1>
-    <form method="POST" action="school">
-      {% from "input/macro.njk" import govukInput %}
+      </h1>
+      <form method="POST" action="school">
+        {% from "input/macro.njk" import govukInput %}
 
-      <span class="govuk-hint">
+        <span class="govuk-hint">
         Enter the school name. Use at least four characters.
       </span>
-      <div class="govuk-form-group" id="schoolNameContainer"></div>
+        <div class="govuk-form-group" id="schoolNameContainer"></div>
 
-      {% from "button/macro.njk" import govukButton %}
+        {% from "button/macro.njk" import govukButton %}
 
-      {{
+        {{
         govukButton({
           text: "Continue",
           preventDoubleClick: true
         })
       }}
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 
-{% set schoolNames = schoolList %}
-<script>
-  window.onload = function() {
-    schoolNames = "{{ schoolList | safe }}".split(",");
-    accessibleAutocomplete({
-      element: document.querySelector("#schoolNameContainer"),
-      id: "schoolName",
-      source: schoolNames,
-      minLength: 4,
-      displayMenu: "overlay",
-      name: "school-name"
-    });
-  };
-</script>
+  {% set schoolNames = schoolList %}
+  <script>
+    window.onload = function () {
+      schoolNames = "{{ schoolList | safe }}".split(",");
+      accessibleAutocomplete({
+        element: document.querySelector("#schoolNameContainer"),
+        id: "schoolName",
+        source: schoolNames,
+        minLength: 4,
+        displayMenu: "overlay",
+        name: "school-name"
+      });
+    };
+  </script>
 
 {% endblock %}

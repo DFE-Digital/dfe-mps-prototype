@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
@@ -32,10 +31,14 @@
           name: "qualified",
           fieldset: {
             legend: {
-              text: "Did you complete your initial teacher training in maths or physics?",
+              text: "Did your initial teacher training specialise in maths or physics?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
+          },
+          hint: {
+            text:"Please select no if you completed your initial teacher training in science but did not specialise
+            in physics."
           },
           items: [
             {
@@ -55,6 +58,15 @@
           text: "Continue",
           preventDoubleClick: true
         }) }}
+
+        <a href="qualified-alt-1" class="govuk-button govuk-button--secondary">
+          Alternate Version 1
+        </a>
+
+        <a href="qualified-alt-2" class="govuk-button govuk-button--secondary">
+          Alternate Version 2
+        </a>
+
       </form>
     </div>
   </div>
