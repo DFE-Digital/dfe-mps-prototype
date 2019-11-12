@@ -3,6 +3,12 @@ const router = express.Router();
 
 // Add your routes here - above the module.exports line
 
+//Ineligible school array
+const ineligibleSchoolNames = [
+  "Ashcroft Technology Academy",
+  "Catmose College"
+];
+
 router.post("/supply-teacher", function(req, res) {
   let supplyTeacher = req.session.data["supplyTeacher"];
 
@@ -92,8 +98,10 @@ router.get("/school", function(req, res) {
 });
 
 router.post("/school", function(req, res) {
-  if (req.session.data.edited) res.redirect("/check-answers");
-  res.redirect("/qualified");
+  if (ineligibleSchoolNames.includes(req.session.data["school-name"])) {
+    res.redirect("/ineligible-school");
+  } else if (req.session.data.edited) res.redirect("/check-answers");
+  else res.redirect("/qualified");
 });
 
 router.post("/disciplinary", function(req, res) {
