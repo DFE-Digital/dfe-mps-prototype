@@ -74,7 +74,7 @@ router.post("/subject", function(req, res) {
 router.post("/awarded", function(req, res) {
   let awarded = req.session.data["awarded"];
 
-  if (awarded === "Before 1 September 2014") {
+  if (awarded === "Before 1 September 2013") {
     res.redirect("/ineligible-awarded");
   } else {
     if (req.session.data.edited) res.redirect("/check-answers");
@@ -135,7 +135,7 @@ router.post("/repaying-loan", function(req, res) {
     if (req.session.data.edited) res.redirect("/check-answers");
     res.redirect("/education-country");
   } else {
-    res.redirect("/payment-method");
+    res.redirect("/contact-method");
   }
 });
 
